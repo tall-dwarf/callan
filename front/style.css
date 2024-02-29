@@ -192,4 +192,46 @@ select:hover {
   background-color: rgb(243, 243, 243);
   cursor: pointer;
   border: 2px solid rgb(232, 232, 232);
+}
+
+button {
+  position: relative;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 25px;
+  background: linear-gradient(213.92deg, rgb(177, 226, 255) -31.405%, rgb(104, 199, 255) 161.932%);
+  transition: all 0.2s;
+  position: relative;
+  border: 0px;
+}
+
+button:hover {
+  box-shadow: 0px 0px 25px 0px rgba(146, 214, 255, 0.5);
+  background: linear-gradient(213.92deg, rgb(198, 234, 255) -31.405%, rgb(129, 208, 255) 161.932%);
+}
+
+button:focus {
+  background: linear-gradient(213.92deg, rgb(134, 210, 255) -31.405%, rgb(71, 187, 255) 161.932%);
+}
+
+button:focus > i {
+  background: linear-gradient(213.92deg, rgb(134, 210, 255) -31.405%, rgb(71, 187, 255) 161.932%);
+}
+
+button > span {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #fff;
+}
+
+button > i {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+  color: #fff;
+  padding: 11px;
+  border-radius: 25px;
+  background: linear-gradient(-37.8deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
 }/*# sourceMappingURL=style.css.map */
