@@ -9,3 +9,12 @@ $color-red: #FE0002;
     line-height: $lineHeight;
     color: $color;
 }
+
+@mixin pseudo-element($top, $left, $width, $height, $content: "") {
+    top: $top;
+    left: $left;
+    width: $width;
+    height: $height;
+    content: $content;
+    position: absolute;
+}
