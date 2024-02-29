@@ -1,0 +1,11 @@
+$color-black: #313131;
+$color-gray: #7A7A7A;
+$color-blue: #023994;
+$color-red: #FE0002;
+
+@mixin fonts($fontSize, $fontWeight, $lineHeight, $color) {
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    line-height: $lineHeight;
+    color: $color;
+}
