@@ -234,4 +234,18 @@ button > i {
   padding: 11px;
   border-radius: 25px;
   background: linear-gradient(-37.8deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
+}
+
+.border-rough {
+  position: relative;
+}
+
+.border-rough::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: url("./images/border.svg") center no-repeat;
 }/*# sourceMappingURL=style.css.map */
