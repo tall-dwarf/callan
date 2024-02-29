@@ -174,4 +174,22 @@ input.error {
   background-color: rgb(255, 248, 248);
   border: 2px solid #FE0002;
   color: #313131;
+}
+
+select {
+  padding: 15px 20px 13px;
+  max-height: 48px;
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px;
+  outline: none;
+  color: rgb(152, 182, 201);
+  transition: all 0.2s;
+  color: #313131;
+  border: 2px solid rgb(250, 250, 250);
+}
+
+select:hover {
+  background-color: rgb(243, 243, 243);
+  cursor: pointer;
+  border: 2px solid rgb(232, 232, 232);
 }/*# sourceMappingURL=style.css.map */
