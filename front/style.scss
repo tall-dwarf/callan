@@ -176,50 +176,121 @@ button {
     transition: all 0.2s;
     position: relative;
     border: 0px;
+    padding: 0px 18px 0px 50px;
+
+    &:hover {
+        box-shadow: 0px 0px 25px 0px rgba(146, 214, 255, 0.5);
+        background: linear-gradient(213.92deg, rgb(198, 234, 255) -31.405%, rgb(129, 208, 255) 161.932%);
+    }
+
+    &:focus {
+        background: linear-gradient(213.92deg, rgb(134, 210, 255) -31.405%, rgb(71, 187, 255) 161.932%);
+    }
+
+    &:focus>i {
+        background: linear-gradient(213.92deg, rgb(134, 210, 255) -31.405%, rgb(71, 187, 255) 161.932%);
+    }
+
+    &>span {
+        @include base.fonts(16px, 600, 26px, #fff);
+    }
+
+    &>i {
+        position: absolute;
+        top: 50%;
+        left: 2%;
+        transform: translateY(-50%);
+        color: #fff;
+        padding: 11px;
+        border-radius: 25px;
+        background: linear-gradient(-37.80deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
+    }
 }
 
-button:hover {
-    box-shadow: 0px 0px 25px 0px rgba(146, 214, 255, 0.5);
-    background: linear-gradient(213.92deg, rgb(198, 234, 255) -31.405%, rgb(129, 208, 255) 161.932%);
+.button{
+    &-white{
+        background: #fff;
+        box-shadow: 0px 0px 25px 0px rgba(82, 191, 255, 0.15);
+        &>span{
+            color: base.$color-blue;
+        }
+        &:hover > span{
+            color: #fff;
+        }
+    }
 }
 
-button:focus {
-    background: linear-gradient(213.92deg, rgb(134, 210, 255) -31.405%, rgb(71, 187, 255) 161.932%);
-}
-
-button:focus>i{
-    background: linear-gradient(213.92deg, rgb(134, 210, 255) -31.405%, rgb(71, 187, 255) 161.932%);
-}
-
-button>span {
-    @include base.fonts(16px, 600, 26px, #fff);
-}
-
-button>i {
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translateY(-50%);
-    color: #fff;
-    padding: 11px;
-    border-radius: 25px;
-    background: linear-gradient(-37.80deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
-}
-
-.border-rough{
+// Border Rough
+.border-rough {
     position: relative;
-    // display:;
-    // border-image: url("./images/border.png") center no-re;
-    
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: url("./images/border.svg") center no-repeat;
+    }
+
 }
 
-.border-rough::after{
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    height: 20px;
-    // background-color: #000;
-    background: url("./images/border.svg") center no-repeat;
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
 }
+
+// Header
+.header {
+    &-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+// Social
+.social{
+    display: flex;
+    gap: 15px;
+    &-icon{
+        width: 15px;
+        color: base.$color-blue;
+        transition: all 0.2s;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
+
+// Navigate
+.nav{
+    &-list{
+        display: flex;
+        list-style-type: none;
+        gap: 20px;
+    }
+
+    &-link{
+        text-decoration: none;
+        transition: all 0.2s;
+        &:hover{
+            color: base.$color-blue;
+        }
+    }
+}
+
+// lang
+.lang{
+    display: flex;
+    gap: 6px;
+    &-item{
+        cursor: pointer;
+        &--active{
+            color: base.$color-blue;
+        }
+    }
+}
+
