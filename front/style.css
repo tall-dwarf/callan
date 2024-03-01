@@ -382,4 +382,36 @@ button > i {
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.section-university {
+  padding-top: 100px;
+}
+.section-university-inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.section-university__title {
+  margin-bottom: 10px;
+}
+.section-university__subtitle {
+  max-width: 423px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.university-slider-item {
+  padding: 12px 12px 12px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.university-slider-item__info {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.university-slider-item__info > strong {
+  font-size: 18px;
 }/*# sourceMappingURL=style.css.map */

@@ -392,3 +392,44 @@ button {
         }
     }
 }
+
+
+// Section University
+
+.section-university{
+    padding-top: 100px;
+
+    &-inner{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__title{
+        margin-bottom: 10px;
+    }
+
+    &__subtitle{
+        max-width: 423px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+}
+
+// University
+.university{
+    &-slider-item{
+        padding: 12px 12px 12px 20px;
+        background-color: #fff;
+        border-radius: 20px;
+        &__info{
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &>strong{
+                font-size: 18px;
+            }
+        }
+    }
+}
