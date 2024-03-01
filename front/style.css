@@ -385,7 +385,7 @@ button > i {
 }
 
 .section-university {
-  padding-top: 100px;
+  padding-top: 150px;
 }
 .section-university-inner {
   display: flex;
@@ -414,4 +414,54 @@ button > i {
 }
 .university-slider-item__info > strong {
   font-size: 18px;
+}
+
+.reviews {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  position: relative;
+}
+.reviews-bg {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.reviews-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reviews__title {
+  margin-bottom: 140px;
+}
+.reviews-item {
+  display: flex;
+  max-width: 367px;
+  padding: 27px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  position: relative;
+  height: 304px;
+  align-items: flex-end;
+}
+.reviews-item__content {
+  position: absolute;
+  background-color: rgb(82, 191, 255);
+  border-radius: 50%;
+  width: 212px;
+  height: 212px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.reviews-item__title {
+  text-align: center;
+  margin-bottom: 8px;
 }/*# sourceMappingURL=style.css.map */
