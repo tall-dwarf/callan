@@ -8,15 +8,20 @@
     @include base.fonts(14px, 400, 20px, base.$color-gray);
 }
 
-strong{
+strong {
     font-weight: 600;
 }
 
+body{
+    background: url("./images/body-bg.png");
+    background-size: cover
+}
 
 
-h1, h1 > * {
+h1,
+h1>* {
     @include base.fonts(44px, 600, 60px, base.$color-black);
-} 
+}
 
 h2 {
     @include base.fonts(36px, 600, 46px, base.$color-blue);
@@ -211,14 +216,16 @@ button {
     }
 }
 
-.button{
-    &-white{
+.button {
+    &-white {
         background: #fff;
         box-shadow: 0px 0px 25px 0px rgba(82, 191, 255, 0.15);
-        &>span{
+
+        &>span {
             color: base.$color-blue;
         }
-        &:hover > span{
+
+        &:hover>span {
             color: #fff;
         }
     }
@@ -256,43 +263,48 @@ button {
 }
 
 // Social
-.social{
+.social {
     display: flex;
     gap: 15px;
-    &-icon{
+
+    &-icon {
         width: 15px;
         color: base.$color-blue;
         transition: all 0.2s;
-        &:hover{
+
+        &:hover {
             opacity: 0.8;
         }
     }
 }
 
 // Navigate
-.nav{
-    &-list{
+.nav {
+    &-list {
         display: flex;
         list-style-type: none;
         gap: 20px;
     }
 
-    &-link{
+    &-link {
         text-decoration: none;
         transition: all 0.2s;
-        &:hover{
+
+        &:hover {
             color: base.$color-blue;
         }
     }
 }
 
 // lang
-.lang{
+.lang {
     display: flex;
     gap: 6px;
-    &-item{
+
+    &-item {
         cursor: pointer;
-        &--active{
+
+        &--active {
             color: base.$color-blue;
         }
     }
@@ -300,38 +312,83 @@ button {
 
 
 // Main
-.main{
-    &-inner{
+.main {
+    &-inner {
         padding-top: 10%;
         height: 800px;
         display: flex;
         flex-direction: column;
     }
-    &-slider{
+
+    &-slider {
         flex: 1 1 auto;
         max-width: 721px;
-        &__title{
+
+        &__title {
             margin-bottom: 25px;
         }
 
-        &__subtitle{
+        &__subtitle {
             margin-bottom: 50px;
         }
     }
 
-    &-info{
+    &-info {
         display: flex;
         gap: 40px;
     }
 }
 
 // Info-item
-.info-item{
+.info-item {
     display: flex;
     align-items: center;
     gap: 6px;
-    & > i {
+
+    &>i {
         color: base.$color-blue;
     }
-   
+
+}
+
+// Why we
+.why-we {
+    padding-top: 100px;
+
+    &-inner {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__subtitle {
+        max-width: 455px;
+        text-align: center;
+        margin-bottom: 7px;
+    }
+
+    &__title{
+        margin-bottom: 65px;
+    }
+
+    &-list {
+        display: flex;
+        gap: 20px;
+        list-style-type: none;
+    }
+
+    &-item {
+        position: relative;
+        border-radius: 20px;
+        box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+        padding: 72px 0px 30px;
+        text-align: center;
+        background-color: #fff;
+        &__img{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }

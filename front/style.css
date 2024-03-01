@@ -17,7 +17,13 @@ strong {
   font-weight: 600;
 }
 
-h1, h1 > * {
+body {
+  background: url("./images/body-bg.png");
+  background-size: cover;
+}
+
+h1,
+h1 > * {
   font-size: 44px;
   font-weight: 600;
   line-height: 60px;
@@ -340,4 +346,40 @@ button > i {
 }
 .info-item > i {
   color: rgb(82, 191, 255);
+}
+
+.why-we {
+  padding-top: 100px;
+}
+.why-we-inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.why-we__subtitle {
+  max-width: 455px;
+  text-align: center;
+  margin-bottom: 7px;
+}
+.why-we__title {
+  margin-bottom: 65px;
+}
+.why-we-list {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+.why-we-item {
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+  padding: 72px 0px 30px;
+  text-align: center;
+  background-color: #fff;
+}
+.why-we-item__img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }/*# sourceMappingURL=style.css.map */
