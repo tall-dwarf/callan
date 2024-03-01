@@ -421,6 +421,13 @@ button > i {
   padding-bottom: 150px;
   position: relative;
 }
+.reviews-clouds {
+  position: absolute;
+  max-width: 100%;
+  left: 0;
+  right: 0;
+  bottom: -20%;
+}
 .reviews-bg {
   position: absolute;
   z-index: -1;
@@ -464,4 +471,12 @@ button > i {
 .reviews-item__title {
   text-align: center;
   margin-bottom: 8px;
+}
+
+.students-photo {
+  padding: 120px 0px 0px;
+}
+.students-photo__title {
+  margin-bottom: 35px;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
