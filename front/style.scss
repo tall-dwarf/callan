@@ -12,7 +12,7 @@ strong {
     font-weight: 600;
 }
 
-body{
+body {
     background: url("./images/body-bg.png");
     background-size: cover
 }
@@ -229,6 +229,21 @@ button {
             color: #fff;
         }
     }
+
+    &-icon {
+        border-radius: 25px;
+        background: linear-gradient(-37.80deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
+        padding: 5px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &>i{
+            position: static;
+            transform: translate(0);
+        }
+    }
 }
 
 // Border Rough
@@ -367,7 +382,7 @@ button {
         margin-bottom: 7px;
     }
 
-    &__title{
+    &__title {
         margin-bottom: 65px;
     }
 
@@ -384,7 +399,8 @@ button {
         padding: 72px 0px 30px;
         text-align: center;
         background-color: #fff;
-        &__img{
+
+        &__img {
             position: absolute;
             top: 0;
             left: 50%;
@@ -396,20 +412,20 @@ button {
 
 // Section University
 
-.section-university{
+.section-university {
     padding-top: 150px;
 
-    &-inner{
+    &-inner {
         display: flex;
         align-items: center;
         flex-direction: column;
     }
 
-    &__title{
+    &__title {
         margin-bottom: 10px;
     }
 
-    &__subtitle{
+    &__subtitle {
         max-width: 423px;
         text-align: center;
         margin-bottom: 40px;
@@ -417,17 +433,19 @@ button {
 }
 
 // University
-.university{
-    &-slider-item{
+.university {
+    &-slider-item {
         padding: 12px 12px 12px 20px;
         background-color: #fff;
         border-radius: 20px;
-        &__info{
+
+        &__info {
             margin-top: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            &>strong{
+
+            &>strong {
                 font-size: 18px;
             }
         }
@@ -435,18 +453,20 @@ button {
 }
 
 // Reviews
-.reviews{
+.reviews {
     padding-top: 150px;
     padding-bottom: 150px;
     position: relative;
-    &-clouds{
+
+    &-clouds {
         position: absolute;
         max-width: 100%;
         left: 0;
         right: 0;
         bottom: -20%;
     }
-    &-bg{
+
+    &-bg {
         position: absolute;
         z-index: -1;
         bottom: 0;
@@ -454,16 +474,18 @@ button {
         right: 0;
         width: 100%;
     }
-    &-inner{
+
+    &-inner {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    &__title{
-        margin-bottom: 140px;    
+
+    &__title {
+        margin-bottom: 140px;
     }
 
-    &-item{
+    &-item {
         display: flex;
         max-width: 367px;
         padding: 27px 20px;
@@ -472,7 +494,8 @@ button {
         position: relative;
         height: 304px;
         align-items: flex-end;
-        &__content{
+
+        &__content {
             position: absolute;
             background-color: base.$color-blue;
             border-radius: 50%;
@@ -486,21 +509,68 @@ button {
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        &__title{
+
+        &__title {
             text-align: center;
             margin-bottom: 8px;
-            
+
         }
     }
 }
 
-
-.students{
-    &-photo{
+// Students
+.students {
+    &-photo {
         padding: 120px 0px 0px;
-        &__title{
+
+        &__title {
             margin-bottom: 35px;
             text-align: center;
         }
     }
+}
+
+// Question
+.question {
+    padding-top: 120px;
+
+    &__title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    &-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &-item {
+        padding: 27px;
+        border-radius: 20px;
+        background-color: #fff;
+        max-width: 536px;
+        width: 100%;
+        position: relative;
+
+        &--open>&__text {
+            max-height: 400px;
+        }
+
+        &__text {
+            transition: all 0.3s;
+            max-height: 0px;
+            overflow: hidden;
+        }
+
+        &__button{
+            position: absolute;    
+            top: 20%;
+            right: 0;
+            transform: translateX(50%);
+        }
+    }
+
+
 }

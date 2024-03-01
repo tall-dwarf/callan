@@ -256,6 +256,20 @@ button > i {
 .button-white:hover > span {
   color: #fff;
 }
+.button-icon {
+  border-radius: 25px;
+  background: linear-gradient(-37.8deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
+  padding: 5px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button-icon > i {
+  position: static;
+  transform: translate(0);
+}
 
 .border-rough {
   position: relative;
@@ -479,4 +493,40 @@ button > i {
 .students-photo__title {
   margin-bottom: 35px;
   text-align: center;
+}
+
+.question {
+  padding-top: 120px;
+}
+.question__title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.question-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.question-item {
+  padding: 27px;
+  border-radius: 20px;
+  background-color: #fff;
+  max-width: 536px;
+  width: 100%;
+  position: relative;
+}
+.question-item--open > .question-item__text {
+  max-height: 400px;
+}
+.question-item__text {
+  transition: all 0.3s;
+  max-height: 0px;
+  overflow: hidden;
+}
+.question-item__button {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  transform: translateX(50%);
 }/*# sourceMappingURL=style.css.map */
