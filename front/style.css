@@ -1,3 +1,7 @@
+.text-blue {
+  color: rgb(82, 191, 255);
+}
+
 * {
   padding: 0px;
   margin: 0px;
@@ -9,7 +13,11 @@
   color: #7A7A7A;
 }
 
-h1 {
+strong {
+  font-weight: 600;
+}
+
+h1, h1 > * {
   font-size: 44px;
   font-weight: 600;
   line-height: 60px;
@@ -301,5 +309,35 @@ button > i {
   cursor: pointer;
 }
 .lang-item--active {
+  color: rgb(82, 191, 255);
+}
+
+.main-inner {
+  padding-top: 10%;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+}
+.main-slider {
+  flex: 1 1 auto;
+  max-width: 721px;
+}
+.main-slider__title {
+  margin-bottom: 25px;
+}
+.main-slider__subtitle {
+  margin-bottom: 50px;
+}
+.main-info {
+  display: flex;
+  gap: 40px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-item > i {
   color: rgb(82, 191, 255);
 }/*# sourceMappingURL=style.css.map */

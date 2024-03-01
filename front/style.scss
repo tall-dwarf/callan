@@ -8,11 +8,15 @@
     @include base.fonts(14px, 400, 20px, base.$color-gray);
 }
 
-
-
-h1 {
-    @include base.fonts(44px, 600, 60px, base.$color-black);
+strong{
+    font-weight: 600;
 }
+
+
+
+h1, h1 > * {
+    @include base.fonts(44px, 600, 60px, base.$color-black);
+} 
 
 h2 {
     @include base.fonts(36px, 600, 46px, base.$color-blue);
@@ -294,3 +298,40 @@ button {
     }
 }
 
+
+// Main
+.main{
+    &-inner{
+        padding-top: 10%;
+        height: 800px;
+        display: flex;
+        flex-direction: column;
+    }
+    &-slider{
+        flex: 1 1 auto;
+        max-width: 721px;
+        &__title{
+            margin-bottom: 25px;
+        }
+
+        &__subtitle{
+            margin-bottom: 50px;
+        }
+    }
+
+    &-info{
+        display: flex;
+        gap: 40px;
+    }
+}
+
+// Info-item
+.info-item{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    & > i {
+        color: base.$color-blue;
+    }
+   
+}
