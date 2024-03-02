@@ -634,4 +634,24 @@ button > i {
 }
 .contacts-info__btn {
   transform: translateY(60%);
+}
+
+.footer {
+  background-color: #fff;
+  padding: 50px 0px 70px;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }/*# sourceMappingURL=style.css.map */

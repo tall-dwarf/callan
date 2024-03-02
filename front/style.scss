@@ -579,6 +579,7 @@ button {
     padding-top: 150px;
     background: url("./images/feedback/bg.png") center no-repeat;
     background-size: cover;
+
     &-inner {
         display: flex;
         align-items: flex-start;
@@ -624,49 +625,53 @@ button {
 
 
 // Contacts
-.contacts{
+.contacts {
     padding-top: 70px;
     padding-bottom: 150px;
     background: url("./images/contacts/bg.png") center no-repeat;
-    background-size: cover; 
+    background-size: cover;
     position: relative;
     overflow: hidden;
-    &-truck{
+
+    &-truck {
         position: absolute;
         z-index: 1;
         right: 0;
         top: 50%;
         transform: translate(15%, -50%);
     }
-    &-inner{
+
+    &-inner {
         display: flex;
         align-items: center;
         flex-direction: column;
     }
 
-    &__title{
+    &__title {
         margin-bottom: 10px;
     }
 
-    &__subtitle{
+    &__subtitle {
         margin-bottom: 66px;
     }
-    
-    &-item{
+
+    &-item {
         display: flex;
         align-items: center;
         gap: 10px;
-        &-content{
+
+        &-content {
             display: flex;
             flex-direction: column;
         }
-        &__title{
+
+        &__title {
             margin-bottom: 4px;
             color: base.$color-black;
         }
     }
 
-    &-info{
+    &-info {
         background-color: #fff;
         border-radius: 20px;
         padding: 12px;
@@ -675,15 +680,41 @@ button {
         display: flex;
         align-items: center;
         flex-direction: column;
-        &__inner{
+
+        &__inner {
             border: 1px dashed rgb(226, 237, 243);
             padding: 30px;
             display: flex;
             flex-direction: column;
             gap: 13px;
         }
-        &__btn{
-           transform: translateY(60%);
+
+        &__btn {
+            transform: translateY(60%);
         }
+    }
+}
+
+// Footer
+.footer {
+    background-color: #fff;
+    padding: 50px 0px 70px;
+
+    &-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }
