@@ -14,7 +14,33 @@ strong {
 
 body {
     background: url("./images/body-bg.png");
-    background-size: cover
+    background-size: cover;
+    overflow-x: hidden
+    // overflow: hidden;
+}
+
+.tree-top-left{
+    position: absolute;
+    top: -10%;
+    left: -20%;
+}
+
+.top-clouds{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0px;
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.bottom-clouds{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0px;
+    z-index: 0;
+    transform: translateY(50%);
 }
 
 
@@ -327,8 +353,21 @@ button {
 }
 
 
+// .london-bg{
+//     position: absolute;
+//     top: 0%;
+//     left: 0;
+//     right: 0;    
+//     z-index: -1;
+//     width: 100%;
+//     // max-height: 800px;
+// }
+
 // Main
 .main {
+    margin-top: 20px;
+    background: url("./images/bg.jpeg") center no-repeat;
+    background-size: contain;
     &-inner {
         padding-top: 10%;
         height: 800px;
@@ -370,7 +409,7 @@ button {
 // Why we
 .why-we {
     padding-top: 100px;
-
+    position: relative;
     &-inner {
         display: flex;
         align-items: center;
@@ -534,7 +573,8 @@ button {
 // Question
 .question {
     padding-top: 120px;
-
+    position: relative;
+    padding-bottom: 50px;
     &__title {
         text-align: center;
         margin-bottom: 40px;
@@ -579,7 +619,7 @@ button {
     padding-top: 150px;
     background: url("./images/feedback/bg.png") center no-repeat;
     background-size: cover;
-
+    position: relative;
     &-inner {
         display: flex;
         align-items: flex-start;
@@ -645,6 +685,8 @@ button {
         display: flex;
         align-items: center;
         flex-direction: column;
+        position: relative;
+        z-index: 2;
     }
 
     &__title {
@@ -718,3 +760,4 @@ button {
         justify-content: space-between;
     }
 }
+

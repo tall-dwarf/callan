@@ -24,6 +24,31 @@ strong {
 body {
   background: url("./images/body-bg.png");
   background-size: cover;
+  overflow-x: hidden;
+}
+
+.tree-top-left {
+  position: absolute;
+  top: -10%;
+  left: -20%;
+}
+
+.top-clouds {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0px;
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+.bottom-clouds {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0px;
+  z-index: 0;
+  transform: translateY(50%);
 }
 
 h1,
@@ -336,6 +361,11 @@ button > i {
   color: rgb(82, 191, 255);
 }
 
+.main {
+  margin-top: 20px;
+  background: url("./images/bg.jpeg") center no-repeat;
+  background-size: contain;
+}
 .main-inner {
   padding-top: 10%;
   height: 800px;
@@ -368,6 +398,7 @@ button > i {
 
 .why-we {
   padding-top: 100px;
+  position: relative;
 }
 .why-we-inner {
   display: flex;
@@ -501,6 +532,8 @@ button > i {
 
 .question {
   padding-top: 120px;
+  position: relative;
+  padding-bottom: 50px;
 }
 .question__title {
   text-align: center;
@@ -539,6 +572,7 @@ button > i {
   padding-top: 150px;
   background: url("./images/feedback/bg.png") center no-repeat;
   background-size: cover;
+  position: relative;
 }
 .feedback-inner {
   display: flex;
@@ -595,6 +629,8 @@ button > i {
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 .contacts__title {
   margin-bottom: 10px;
