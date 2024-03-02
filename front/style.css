@@ -2,6 +2,10 @@
   color: rgb(82, 191, 255);
 }
 
+.bg-blue {
+  background-color: rgb(82, 191, 255);
+}
+
 * {
   padding: 0px;
   margin: 0px;
@@ -529,4 +533,105 @@ button > i {
   top: 20%;
   right: 0;
   transform: translateX(50%);
+}
+
+.feedback {
+  padding-top: 150px;
+  background: url("./images/feedback/bg.png") center no-repeat;
+  background-size: cover;
+}
+.feedback-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.feedback-form {
+  flex: 1 1 auto;
+  background-color: #fff;
+  border-radius: 20px;
+  max-width: 560px;
+  padding: 12px;
+}
+.feedback-form__title {
+  margin-bottom: 12px;
+}
+.feedback-form__subtitle {
+  margin-bottom: 21px;
+}
+.feedback-form__inner {
+  text-align: center;
+  padding: 30px 20px;
+  border: 1px dashed rgb(226, 237, 243);
+  border-radius: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+.form__btn {
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.contacts {
+  padding-top: 70px;
+  padding-bottom: 150px;
+  background: url("./images/contacts/bg.png") center no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.contacts-truck {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 50%;
+  transform: translate(15%, -50%);
+}
+.contacts-inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.contacts__title {
+  margin-bottom: 10px;
+}
+.contacts__subtitle {
+  margin-bottom: 66px;
+}
+.contacts-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contacts-item-content {
+  display: flex;
+  flex-direction: column;
+}
+.contacts-item__title {
+  margin-bottom: 4px;
+  color: #313131;
+}
+.contacts-info {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 12px;
+  max-width: 376px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.contacts-info__inner {
+  border: 1px dashed rgb(226, 237, 243);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.contacts-info__btn {
+  transform: translateY(60%);
 }/*# sourceMappingURL=style.css.map */

@@ -7,6 +7,10 @@ $color-red: #FE0002;
     color: $color-blue;
 }
 
+.bg-blue{
+    background-color: $color-blue;
+}
+
 @mixin fonts($fontSize, $fontWeight, $lineHeight, $color) {
     font-size: $fontSize;
     font-weight: $fontWeight;
