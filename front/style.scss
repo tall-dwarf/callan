@@ -410,6 +410,7 @@ button {
 .why-we {
     padding-top: 100px;
     position: relative;
+    padding-bottom: 50px;
     &-inner {
         display: flex;
         align-items: center;
@@ -761,3 +762,24 @@ button {
     }
 }
 
+// About
+.about{
+    padding-top: 40px;
+    &-inner{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 25px;
+    }
+    &-content{
+        display: flex;
+        gap: 20px;
+        
+    }
+    &-info{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

@@ -399,6 +399,7 @@ button > i {
 .why-we {
   padding-top: 100px;
   position: relative;
+  padding-bottom: 50px;
 }
 .why-we-inner {
   display: flex;
@@ -690,4 +691,24 @@ button > i {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.about {
+  padding-top: 40px;
+}
+.about-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+}
+.about-content {
+  display: flex;
+  gap: 20px;
+}
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }/*# sourceMappingURL=style.css.map */
