@@ -549,13 +549,14 @@ button > i {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  list-style-type: none;
+  gap: 30px;
 }
 .question-item {
   padding: 27px;
   border-radius: 20px;
   background-color: #fff;
-  max-width: 536px;
-  width: 100%;
+  flex: 1 1 40%;
   position: relative;
 }
 .question-item--open > .question-item__text {
@@ -797,4 +798,88 @@ button > i {
 }
 .radio-icon-input:checked + .radio-icon-label > i {
   color: rgb(82, 191, 255);
+}
+
+.university {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.university__title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.university-inner {
+  display: flex;
+}
+.university-content {
+  flex: 1 1 auto;
+}
+.university-content__img {
+  margin-bottom: 50px;
+  border-radius: 20px;
+}
+.university-content__title {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.university-content__text + .university-content__text {
+  padding-top: 10px;
+}
+.university-sidebar {
+  flex: 0 0 365px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.university-documents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.university-documents__title {
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-align: center;
+  max-width: 270px;
+}
+.university-documents__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.university-documents__item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.university-info {
+  padding: 13px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.university-info-item {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+}
+.university-info-item:nth-child(2n+1) {
+  background-color: rgb(248, 252, 255);
+}
+.university-info-inner {
+  border: 1px dashed rgb(226, 237, 243);
+  border-radius: 20px;
+}
+.university-info__key {
+  color: rgb(152, 182, 201);
+  width: 114px;
+  display: inline-block;
+}
+.university-info__value {
+  font-weight: 500;
+  color: #7A7A7A;
+}
+
+.academic__title {
+  margin-bottom: 20px;
 }/*# sourceMappingURL=style.css.map */
