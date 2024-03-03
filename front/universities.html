@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./font/stylesheet.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/b75d51731b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <img class="logo" src="./images/logo.png" alt="Логотип">
+                <div class="social">
+                    <a class="social-link" href="/">
+                        <i class="social-icon fa-brands fa-instagram fa-xl"></i>
+                    </a>
+                    <a class="social-link" href="/">
+                        <i class="social-icon fa-brands fa-facebook-f fa-xl"></i>
+                    </a>
+                    <a class="social-link" href="/">
+                        <i class="social-icon fa-brands fa-youtube fa-xl"></i>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Услуги</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Университеты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Студенты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="lang">
+                    <div class="lang-item lang-item--active">РУС</div>
+                    <div class="lang-item">UZ</div>
+                </div>
+
+                <button class="button-white">
+                    <i class="fas fa-phone"></i>
+                    <span>Оставить заявку</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="universities">
+        <div class="container">
+            <div class="universities-inner">
+                <h2 class="universities__title">Университеты</h2>
+                <div class="universities-content">
+                    <div class="universities-sidebar">
+                        <h3>Фильтры</h3>
+                        <div class="filter-item">
+                            <span class="filter-item__title text-black">Страны</span>
+                        </div>
+                    </div>
+                    <div class="universities-main">
+                        <div class="universities-form">
+                            <input class="universities-form__input" placeholder="Поиск" type="text">
+                            <div class="radio-icon-list">
+                                <div class="radio-icon">
+                                    <input id="huey1" class="radio-icon-input" type="radio" name="drone" />
+                                    <label class="radio-icon-label" for="huey1"><i
+                                            class="radio-icon-icon fa-solid fa-fire fa-lg"></i>По популярности</label>
+                                </div>
+                                <div class="radio-icon">
+                                    <input id="huey2" class="radio-icon-input" type="radio" name="drone" />
+                                    <label class="radio-icon-label" for="huey2"><i
+                                            class="radio-icon-icon fa-solid fa-arrow-up fa-lg"></i>По цене</label>
+                                </div>
+                                <div class="radio-icon">
+                                    <input id="huey3" class="radio-icon-input" type="radio" name="drone" />
+                                    <label class="radio-icon-label" for="huey3"><i
+                                            class="radio-icon-icon fa-solid fa-arrow-down fa-lg"></i>По цене</label>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="universities-list">
+                            <li class="universities-item">
+                                <div class="universities-item-slider">
+                                    <div class="universities-item-wrapper">
+                                        <div class="universities-item-slider-item">
+                                            <img src="./images/university/1.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="universities-item-content">
+                                    <h4>Название университета</h4>
+                                    <ul class="universities-item-list">
+                                        <li><i class="fa-solid fa-book fa-xl text-blue"></i></li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li><a class="text-blue" href="">ещё...</a></li>
+                                    </ul>
+                                    <div class="">
+                                        <i class="fa-solid fa-flag fa-xl text-blue"></i>
+                                        <span>Москва, Россия</span>
+                                    </div>
+                                </div>
+                                <div class="universities-item-info">
+                                    <h4 class="text-blue universities-item-info__title">от 3 000 €</h4>
+                                    <h4>за семестр</h4>
+                                </div>
+                            </li>
+                            <li class="universities-item">
+                                <div class="universities-item-slider">
+                                    <div class="universities-item-wrapper">
+                                        <div class="universities-item-slider-item">
+                                            <img src="./images/university/1.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="universities-item-content">
+                                    <h4>Название университета</h4>
+                                    <ul class="universities-item-list">
+                                        <li><i class="fa-solid fa-book fa-xl text-blue"></i></li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li>Архитектура</li>
+                                        <li><a class="text-blue" href="">ещё...</a></li>
+                                    </ul>
+                                    <div class="">
+                                        <i class="fa-solid fa-flag fa-xl text-blue"></i>
+                                        <span>Москва, Россия</span>
+                                    </div>
+                                </div>
+                                <div class="universities-item-info">
+                                    <h4 class="text-blue universities-item-info__title">от 3 000 €</h4>
+                                    <h4>за семестр</h4>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-main">
+                    <img src="./images/callan.png" alt="">
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">О нас</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Услуги</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Университеты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Студенты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Новости</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Контакты</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="social">
+                        <a class="social-link" href="/">
+                            <i class="social-icon fa-brands fa-instagram fa-xl"></i>
+                        </a>
+                        <a class="social-link" href="/">
+                            <i class="social-icon fa-brands fa-facebook-f fa-xl"></i>
+                        </a>
+                        <a class="social-link" href="/">
+                            <i class="social-icon fa-brands fa-youtube fa-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <img src="./images/world-wide.png" alt="">
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone fa-xl"></i>
+                        <strong>+998 (99) 878-63-99</strong>
+                        <strong>+998 (99) 878-63-99</strong>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock fa-xl"></i>
+                        <strong>Пн-Пт 9:00 - 18:00</strong>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot fa-xl"></i>
+                        <strong>г. Город</strong>
+                        <span>ул. Улица, 24 (Офис 24)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
