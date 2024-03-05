@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import BtnIcon from "../../shared/ui/BtnIcon";
+import { ModalContext } from "../../shared/context/modalcontext";
 
 
 
 
 export default function Main() {
+    const modalContext = useContext(ModalContext)
 
     return (
         <>
@@ -14,10 +18,7 @@ export default function Main() {
                                 <div className="main-slider-item">
                                     <h1 className="main-slider__title">Грант и контрактное обучение в <strong className="text-blue">зарубежных</strong> вузах</h1>
                                     <h4 className="main-slider__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</h4>
-                                    <button>
-                                        <i className="fas fa-phone"></i>
-                                        <span>Связаться с нами</span>
-                                    </button>
+                                    <BtnIcon onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
                                 </div>
                             </div>
                         </div>

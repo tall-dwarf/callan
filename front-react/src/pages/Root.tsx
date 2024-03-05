@@ -1,12 +1,17 @@
 import { Outlet } from "react-router-dom"
-import { FaPhone } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { routerConfig } from "../app/router";
 import { NavLink } from "react-router-dom";
+import BtnIcon from "../shared/ui/BtnIcon";
+import { useState } from "react";
+import { ModalContext } from "../shared/context/modalcontext";
+import Modal from "../shared/hocs/Modal";
+import FeedbackForm from "../widgets/FeedbackForm/FeedbackForm";
 
 export default function Root() {
+    const [modalIsOpen, setModalIsOpen] = useState(false)
     const navConfig = [
         { id: 1, text: 'Главная', path: routerConfig.main, },
         { id: 2, text: 'О нас', path: routerConfig.about, },
@@ -16,6 +21,8 @@ export default function Root() {
 
     return (
         <>
+            <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} ><FeedbackForm /></Modal>
+            
             <header className="header">
                 <div className="container">
                     <div className="header-inner">
@@ -49,17 +56,18 @@ export default function Root() {
                             <div className="lang-item">UZ</div>
                         </div>
 
-                        <button className="button-white header-button">
-                            <FaPhone color="#ffffff" size={35} />
-                            <span>Оставить заявку</span>
-                        </button>
+                        <BtnIcon className="button-white header-button" icon="phone" text="Оставить заявку" />
                         <div role="button" className="burger">
                             <img src="/images/burger.png" alt="" />
                         </div>
                     </div>
                 </div>
             </header>
-            <Outlet />
+
+            <ModalContext.Provider value={{ open: () => setModalIsOpen(true) }}>
+                <Outlet />
+            </ModalContext.Provider>
+
             <footer className="footer">
                 <div className="container">
                     <div className="footer-inner">
@@ -67,27 +75,12 @@ export default function Root() {
                             <img src="/images/callan.png" alt="" />
                             <nav className="nav footer-nav">
                                 <ul className="nav-list footer-nav-list">
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Главная</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">О нас</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Услуги</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Университеты</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Студенты</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Новости</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">Контакты</a>
-                                    </li>
+                                    {
+                                        navConfig.map(navItem =>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" key={navItem.id} to={navItem.path}>{navItem.text}</NavLink>
+                                            </li>)
+                                    }
                                 </ul>
                             </nav>
                             <div className="social">
