@@ -202,10 +202,7 @@ export default function Main() {
                                 </div>
 
                             </div>
-                            <button className="contacts-info__btn">
-                                <i className="fa-solid fa-phone"></i>
-                                <span>Связаться с нами</span>
-                            </button>
+                            <BtnIcon onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
                         </div>
                     </div>
                 </div>
