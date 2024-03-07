@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import BtnIcon from "../../shared/ui/BtnIcon";
+import CustomButton from "../../shared/ui/CustomButton";
 import { ModalContext } from "../../shared/context/modalcontext";
-
-
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import UniversitySlider from "../../widgets/UniversitySlider";
+import Reviews from "../../widgets/Reviews";
+import StudentsPhoto from "../../widgets/StudentsPhoto";
+import Accordion from "../../shared/hocs/Accordion";
+import Question from "../../widgets/Question";
 
 export default function Main() {
     const modalContext = useContext(ModalContext)
@@ -13,15 +16,27 @@ export default function Main() {
             <main className="main">
                 <div className="container">
                     <div className="main-inner">
-                        <div className="main-slider">
-                            <div className="main-slider-wrapper">
+                        <Swiper
+                            className="main-slider"
+                            spaceBetween={2}
+                            slidesPerView={1}
+                            onSlideChange={() => console.log('slide change')}
+                        >
+                            <SwiperSlide>
                                 <div className="main-slider-item">
                                     <h1 className="main-slider__title">Грант и контрактное обучение в <strong className="text-blue">зарубежных</strong> вузах</h1>
                                     <h4 className="main-slider__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</h4>
-                                    <BtnIcon onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
+                                    <CustomButton onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
                                 </div>
-                            </div>
-                        </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="main-slider-item">
+                                    <h1 className="main-slider__title">Грант и контрактное обучение в <strong className="text-blue">зарубежных</strong> вузах</h1>
+                                    <h4 className="main-slider__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</h4>
+                                    <CustomButton onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
                         <div className="main-info">
                             <div className="info-item">
                                 <i className="fa-solid fa-location-dot fa-xl"></i>
@@ -61,85 +76,13 @@ export default function Main() {
                 </div>
             </section>
 
-            <section className="section-university">
-                <div className="container">
-                    <div className="section-university-inner">
-                        <h2 className="section-university__title">Университеты</h2>
-                        <h4 className="section-university__subtitle">В нашем каталоге вы найдете более 100 университетов из более чем 14 стран</h4>
-                        <div className="university-slider">
-                            <div className="university-slider-wrapper">
-                                <div className="university-slider-item">
-                                    <img src="/images/university/1.png" alt="" />
-                                    <div className="university-slider-item__info">
-                                        <strong>Россия</strong>
-                                        <span>15 вузов</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <UniversitySlider />
 
-            <section className="reviews">
-                <img className="reviews-bg" src="/images/reviews/bg.png" alt="" />
-                <img className="reviews-clouds" src="/images/clouds.png" alt="" />
-                <div className="container">
-                    <div className="reviews-inner">
-                        <h2 className="reviews__title">Отзывы наших студентов</h2>
-                        <div className="reviews-slider">
-                            <div className="reviews-slider-wrapper">
-                                <div className="reviews-item">
-                                    <div className="reviews-item__content">
-                                        <img className="reviews-item__img" src="/images/reviews/1.png" alt="" />
-                                    </div>
-                                    <div className="reviews-item__info">
-                                        <h4 className="reviews-item__title">Александр Иванов</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit!</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Reviews />
 
-            <section className="students-photo">
-                <div className="container">
-                    <div className="students-photo-inner">
-                        <h2 className="students-photo__title">Фотографии наших студентов</h2>
-                        <div className="students-photo-slider">
-                            <div className="students-photo-wrapper">
-                                <div className="students-photo-item">
-                                    <img className="students-photo-item__img" src="/images/students/1.png" alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <StudentsPhoto />
 
-            <section className="question">
-                <img className="bottom-clouds" src="/images/clouds.png" alt="" />
-                <div className="container">
-                    <div className="question-inner">
-                        <h2 className="question__title">Вопросы и ответы</h2>
-
-                        <ul className="question-list">
-                            <li className="question-item">
-                                <button className="question-item__button button-icon"><i className="fa-solid fa-plus"></i></button>
-                                <h4 className="question-item__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod?</h4>
-                                <p className="question-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
-                            </li>
-                            <li className="question-item question-item--open">
-                                <button className="question-item__button button-icon"><i className="fa-solid fa-plus"></i></button>
-                                <h4 className="question-item__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod?</h4>
-                                <p className="question-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+            <Question />
 
             <section className="feedback">
                 <img className="bottom-clouds" src="/images/clouds.png" alt="" />
@@ -202,7 +145,7 @@ export default function Main() {
                                 </div>
 
                             </div>
-                            <BtnIcon onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
+                            <CustomButton onClick={() => modalContext?.open()} className="" icon="phone" text="Связатся с нами" />
                         </div>
                     </div>
                 </div>

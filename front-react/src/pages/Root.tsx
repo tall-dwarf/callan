@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { routerConfig } from "../app/router";
 import { NavLink } from "react-router-dom";
-import BtnIcon from "../shared/ui/BtnIcon";
+import BtnIcon from "../shared/ui/CustomButton";
 import { useState } from "react";
 import { ModalContext } from "../shared/context/modalcontext";
 import Modal from "../shared/hocs/Modal";

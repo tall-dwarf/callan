@@ -326,12 +326,13 @@ button {
         &:hover {
             opacity: 0.5;
         }
+
         // width: 15px;
         &>path {
             color: base.$color-blue;
             transition: all 0.2s;
 
-            
+
         }
     }
 }
@@ -395,6 +396,7 @@ button {
     &-slider {
         flex: 1 1 auto;
         max-width: 721px;
+        margin: 0px;
 
         &__title {
             margin-bottom: 25px;
@@ -493,6 +495,12 @@ button {
 
 // University
 .university {
+    &-slider {
+        overflow: hidden;
+        width: 60%;
+        // margin-left: 10%;
+    }
+
     &-slider-item {
         padding: 12px 12px 12px 20px;
         background-color: #fff;
@@ -541,18 +549,22 @@ button {
     }
 
     &__title {
-        margin-bottom: 140px;
+        margin-bottom: 40px;
+    }
+
+    &-slider {
+        max-width: 100%;
     }
 
     &-item {
+        height: 410px;
         display: flex;
         max-width: 367px;
-        padding: 27px 20px;
-        background-color: #fff;
         border-radius: 20px;
         position: relative;
-        height: 304px;
-        align-items: flex-end;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
 
         &__content {
             position: absolute;
@@ -566,7 +578,14 @@ button {
             overflow: hidden;
             top: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
+            // transform: translateY(50%);
+            transform: translate(-50%, 0%);
+        }
+
+        &__info {
+            background-color: #fff;
+            padding: 140px 27px 20px;
+            border-radius: 20px;
         }
 
         &__title {
@@ -607,34 +626,37 @@ button {
         align-items: flex-start;
         list-style-type: none;
         gap: 30px;
-    }
-
-    &-item {
-        padding: 27px;
-        border-radius: 20px;
-        background-color: #fff;
-        flex: 1 1 40%;
-        // max-width: 536px;
-        // width: 100%;
-        position: relative;
-
-        &--open>&__text {
-            max-height: 400px;
-        }
-
-        &__text {
-            transition: all 0.3s;
-            max-height: 0px;
-            overflow: hidden;
-        }
-
-        &__button {
-            position: absolute;
-            top: 20%;
-            right: 0;
-            transform: translateX(50%);
+        & > div{
+            flex: 0 1 536px;
         }
     }
+
+    // &-item {
+    //     padding: 27px;
+    //     border-radius: 20px;
+    //     background-color: #fff;
+    //     flex: 1 1 40%;
+    //     // max-width: 536px;
+    //     // width: 100%;
+    //     position: relative;
+
+    //     &--open>&__text {
+    //         max-height: 400px;
+    //     }
+
+    //     &__text {
+    //         transition: all 0.3s;
+    //         max-height: 0px;
+    //         overflow: hidden;
+    //     }
+
+    //     &__button {
+    //         position: absolute;
+    //         top: 20%;
+    //         right: 0;
+    //         transform: translateX(50%);
+    //     }
+    // }
 }
 
 // Feedback
@@ -698,10 +720,12 @@ button {
         &__icon {
             color: rgb(190, 216, 232);
         }
-        &__error{
+
+        &__error {
             color: base.$color-red;
             opacity: 0;
-            &--open{
+
+            &--open {
                 opacity: 1;
             }
         }
@@ -1088,7 +1112,7 @@ button {
 }
 
 // Modal
-.modal{
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -1101,14 +1125,83 @@ button {
     z-index: 4;
     transform: translateX(-100%);
     transition: all 0.3s;
-    &--open{
+
+    &--open {
         transform: translateX(-0%);
     }
 
-    &-content{
+    &-content {
         background-color: #fff;
         border-radius: 20px;
         max-width: 400px;
+    }
+}
+
+// Btn Icon
+.btn-icon {
+    cursor: pointer;
+    background: linear-gradient(213.92deg, rgb(177, 226, 255) -67.782%, rgb(104, 199, 255) 175.484%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: linear-gradient(213.92deg, rgb(134, 210, 255) -67.782%, rgb(71, 187, 255) 175.484%);
+    }
+
+    &>svg {
+        border-radius: 25px;
+        // background: linear-gradient(-37.80deg, rgb(177, 226, 255) 1.249%, rgb(104, 199, 255) 89.556%);
+    }
+}
+
+// Accordion
+.accordion {
+    background-color: #fff;
+    padding: 27px;
+    border-radius: 20px;
+    position: relative;
+
+    // overflow: hidden;
+    &-content {
+        max-height: 0px;
+        transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        overflow: hidden;
+
+        &--open {
+            transition: max-height 1s ease-in-out;
+            max-height: 1000px;
+        }
+    }
+
+    &-header {
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    &-buttons {
+        position: absolute;
+        top: 5%;
+        right: 0px;
+        transform: translateX(50%);
+
+        &>&__minus {
+            display: none;
+        }
+
+        &--open {
+            &>.accordion-buttons__minus {
+                display: flex;
+                background: #D9D9D9;
+            }
+
+            &>.accordion-buttons__plus {
+                display: none;
+            }
+        }
     }
 }
 

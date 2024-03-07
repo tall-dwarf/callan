@@ -1,20 +1,19 @@
 import { icons } from "../../app/data"
 
+
 type BtnIconProps = {
-    text: string,
     icon: keyof typeof icons,
     className?: string,
-    onClick: () => void
+    onClick: () => void,
 }
 
-export default function BtnIcon({ text, icon, className, onClick }: BtnIconProps) {
+export default function BtnIcon({ icon, className, onClick }: BtnIconProps) {
 
     const DynamicIcon = icons[icon]
 
     return (
-        <button onClick={() => onClick()} className={className}>
-            <DynamicIcon color="#ffffff" size={35} /> 
-            <span>{text}</span>
-        </button>
+        <div role="button" onClick={() => onClick()} className={"btn-icon " + className}>
+            <DynamicIcon size={18} fill="#fff" />
+        </div>
     )
 }

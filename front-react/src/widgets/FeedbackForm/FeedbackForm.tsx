@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react"
 import FormItem from "../../shared/ui/FormItem"
-import BtnIcon from "../../shared/ui/BtnIcon";
+import BtnIcon from "../../shared/ui/CustomButton";
 import useForm from "../../shared/hooks/useForm";
 import { Validator } from "../../shared/helpers/Validator";
 
