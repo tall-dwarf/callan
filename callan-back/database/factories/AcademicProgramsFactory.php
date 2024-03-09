@@ -17,7 +17,8 @@ class AcademicProgramsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->userName(),
+            'form_education' => fake()->randomElement(['Бакалавриат', 'Магистратура', 'Докторантура', 'Подготовка к университету', 'Языковые курсы'])
         ];
     }
 }
