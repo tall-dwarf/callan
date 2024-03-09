@@ -33,6 +33,7 @@ export default function FeedbackForm() {
     }
 
     return (
+        <div className="feedback-form">
         <div className="feedback-form__inner">
             <h3 className="feedback-form__title">Связатся с нами</h3>
             <h4 className="feedback-form__subtitle">Оставьте свои данные и наш специалист обязательно свяжемся с Вами в течение дня</h4>
@@ -56,8 +57,9 @@ export default function FeedbackForm() {
                     icon={"message"}
                     label="Дополнительные комментарии" />
 
-                <BtnIcon icon="message" text="Отправить" />
+                <BtnIcon icon="message" text="Отправить" onClick={() => 123} />
             </form>
+        </div>
         </div>
     )
 }

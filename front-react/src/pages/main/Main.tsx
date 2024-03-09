@@ -5,8 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import UniversitySlider from "../../widgets/UniversitySlider";
 import Reviews from "../../widgets/Reviews";
 import StudentsPhoto from "../../widgets/StudentsPhoto";
-import Accordion from "../../shared/hocs/Accordion";
+// import Accordion from "../../shared/hocs/Accordion";
 import Question from "../../widgets/Question";
+import FeedbackForm from "../../widgets/FeedbackForm/FeedbackForm";
 
 export default function Main() {
     const modalContext = useContext(ModalContext)
@@ -91,21 +92,7 @@ export default function Main() {
                         <div className="feedback-info">
                             <img src="/images/feedback/woman.png" alt="" />
                         </div>
-                        <div className="feedback-form">
-                            <div className="feedback-form__inner">
-                                <h3 className="feedback-form__title">Связатся с нами</h3>
-                                <h4 className="feedback-form__subtitle">Оставьте свои данные и наш специалист обязательно свяжемся с Вами в течение дня</h4>
-                                <form className="form" action="">
-                                    <input placeholder="Ваше имя" type="text" />
-                                    <input placeholder="+998 (___) __ - __ - __" type="text" />
-                                    <input placeholder="Дополнительные комментарии" type="text" />
-                                    <button className="form__btn">
-                                        <i className="fa-solid fa-message"></i>
-                                        <span>Отправить</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                        <FeedbackForm />
                     </div>
                 </div>
             </section>
