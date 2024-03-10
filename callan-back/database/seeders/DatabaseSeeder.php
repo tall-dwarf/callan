@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\University;
+use App\Models\AcademicPrograms;
+use App\Models\UniversityGallery;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,11 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $programs = AcademicPrograms::factory(300)->create();
+
+        University::factory(150)->create()->each(function ($university) use ($programs) {
+            $university->academicPrograms()->attach($programs->random(rand(20, 50))->pluck('id')->toArray());
+        });
+
+        UniversityGallery::factory(70)->create();
+
     }
 }

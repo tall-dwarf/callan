@@ -2,25 +2,26 @@
 
 namespace Database\Factories;
 
-use App\Models\AcademicPrograms;
 use App\Models\University;
+use App\Models\UniversityGallery;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class UniversityAcademicProgramFactory extends Factory
+class UniversityGalleryFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
+    protected $model = UniversityGallery::class;
     public function definition(): array
     {
         return [
-            'university_id' => University::factory(),
-            'academic_program_id' => AcademicPrograms::factory()
+            'img' => fake()->imageUrl(850, 300),
+            'university_id' => University::inRandomOrder()->first()->id,
         ];
     }
 }

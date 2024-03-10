@@ -11,6 +11,6 @@ class AcademicPrograms extends Model
 
     public function universities()
     {
-        return $this->belongsToMany(University::class);
+        return $this->belongsToMany(University::class, 'university_academic_program', 'academic_program_id', 'university_id');
     }
 }
