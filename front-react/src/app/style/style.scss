@@ -896,7 +896,7 @@ button {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            flex: 1 1 20%;
+            flex: 1 1 30%;
 
             &__title {
                 font-weight: 600;
@@ -909,6 +909,11 @@ button {
             flex-wrap: wrap;
             list-style-type: none;
             max-width: 70%;
+        }
+
+        &-slider{
+            max-width: 260px;
+            width: 100%;
         }
     }
 
@@ -923,7 +928,11 @@ button {
     }
 
     &-sidebar {
-        flex: 0 1 270px;
+        flex: 0 1 300px;
+        &__btn{
+            margin-top: 10px;
+            width: 100%;
+        }
     }
 
     &-main {
@@ -943,7 +952,7 @@ button {
 }
 
 // Radio Icon
-.radio-icon {
+.radio-button {
     &-icon {
         color: rgb(217, 217, 217);
     }
@@ -957,10 +966,11 @@ button {
     &-input {
         display: none;
 
-        &:checked+.radio-icon-label {
+        &:checked+.radio-button-label {
             color: base.$color-blue;
 
-            &>i {
+            &>svg {
+                fill: base.$color-blue;
                 color: base.$color-blue;
             }
         }
@@ -1204,6 +1214,20 @@ button {
                 display: none;
             }
         }
+    }
+}
+
+.filter{
+    &-item{
+        &__title{
+            font-weight: 500;
+        }
+    }
+    
+    &-radio{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 }
 

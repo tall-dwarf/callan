@@ -22,7 +22,7 @@ export default function Root() {
     return (
         <>
             <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} ><FeedbackForm /></Modal>
-            
+
             <header className="header">
                 <div className="container">
                     <div className="header-inner">
@@ -44,8 +44,8 @@ export default function Root() {
                             <ul className="nav-list header-nav__list">
                                 {
                                     navConfig.map(navItem =>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" key={navItem.id} to={navItem.path}>{navItem.text}</NavLink>
+                                        <li key={navItem.id} className="nav-item">
+                                            <NavLink className="nav-link" to={navItem.path}>{navItem.text}</NavLink>
                                         </li>)
                                 }
                             </ul>
@@ -56,7 +56,7 @@ export default function Root() {
                             <div className="lang-item">UZ</div>
                         </div>
 
-                        <BtnIcon className="button-white header-button" icon="phone" text="Оставить заявку" />
+                        <BtnIcon onClick={() => 123} className="button-white header-button" icon="phone" text="Оставить заявку" />
                         <div role="button" className="burger">
                             <img src="/images/burger.png" alt="" />
                         </div>
@@ -77,8 +77,8 @@ export default function Root() {
                                 <ul className="nav-list footer-nav-list">
                                     {
                                         navConfig.map(navItem =>
-                                            <li className="nav-item">
-                                                <NavLink className="nav-link" key={navItem.id} to={navItem.path}>{navItem.text}</NavLink>
+                                            <li key={navItem.id} className="nav-item">
+                                                <NavLink className="nav-link" to={navItem.path}>{navItem.text}</NavLink>
                                             </li>)
                                     }
                                 </ul>
