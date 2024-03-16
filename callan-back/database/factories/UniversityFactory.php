@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class UniversityFactory extends Factory
     {
         return [
             'name' => fake()->userName(),
-            'country' => fake()->country(),
+            'country_id' => Country::inRandomOrder()->first()->id,
             'year' => fake()->year(),
             'rating' => fake()->numberBetween(1, 5),
             'students_cnt' => fake()->numberBetween(4000, 20000),

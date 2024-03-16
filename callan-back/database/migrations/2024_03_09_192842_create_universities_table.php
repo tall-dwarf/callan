@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('photo');
             $table->text("information");
             $table->timestamps();
+
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 

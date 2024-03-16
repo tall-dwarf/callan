@@ -84,6 +84,29 @@ label {
     gap: 12px;
 }
 
+// Range
+input[type=range] {
+    // background: transparent;
+    // -webkit-appearance: none;
+    // background: rgba(100, 57, 57, 0.6);
+    padding: 0;
+    margin: 0;
+    accent-color: base.$color-blue;
+    // background: base.$color-gray;
+    cursor: pointer;
+    width: 100%;
+
+    &::-webkit-slider-runnable-track {}
+}
+
+.range-input {
+    &__label {
+        font-weight: 500;
+        color: base.$color-black;
+    }
+}
+
+
 // Radio
 input[type=radio] {
     position: relative;
@@ -119,6 +142,7 @@ input[type=radio]:checked~span {
 // Checkbox
 input[type=checkbox] {
     position: relative;
+    cursor: pointer;
 }
 
 input[type=checkbox]::after {
@@ -155,6 +179,82 @@ input[type=checkbox]:checked::before {
 input[type=checkbox]:checked~span {
     color: base.$color-black;
 }
+
+.checkbox-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.seach-checkbox {
+    position: relative;
+
+    &__label {
+        font-weight: 500;
+        color: base.$color-black;
+    }
+
+    &-form {
+        position: relative;
+    }
+
+    &__input {
+        width: 100%;
+    }
+
+    &__close {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        background: transparent;
+        position: absolute;
+        right: 4px;
+        top: 30px;
+        border-radius: 0px;
+        opacity: 0;
+        transition: all 0.2s;
+
+        &--open {
+            opacity: 1;
+        }
+
+        &:hover {
+            background: none;
+            box-shadow: none;
+        }
+
+        &>svg {
+            position: static;
+            transform: translate(0);
+            padding: 0px;
+            background: transparent;
+        }
+    }
+
+    &-list {
+        position: absolute;
+        height: 300px;
+        z-index: 2;
+        top: 70px;
+        overflow: hidden;
+        background-color: #fff;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 20px;
+        transition: all 0.2s;
+        max-height: 0px;
+
+        &--open {
+            padding: 15px;
+            overflow-y: scroll;
+            max-height: 300px;
+        }
+    }
+
+}
+
 
 // Input
 input {
@@ -626,7 +726,8 @@ button {
         align-items: flex-start;
         list-style-type: none;
         gap: 30px;
-        & > div{
+
+        &>div {
             flex: 0 1 536px;
         }
     }
@@ -680,6 +781,7 @@ button {
         padding: 12px;
         position: relative;
         z-index: 3;
+
         &__title {
             margin-bottom: 12px;
         }
@@ -863,6 +965,12 @@ button {
     padding-top: 50px;
     padding-bottom: 100px;
 
+    &-filter {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
     &-inner {
         // display: flex;
         // align-items: center;
@@ -897,6 +1005,7 @@ button {
             flex-direction: column;
             justify-content: center;
             flex: 1 1 30%;
+            align-items: flex-end;
 
             &__title {
                 font-weight: 600;
@@ -911,9 +1020,10 @@ button {
             max-width: 70%;
         }
 
-        &-slider{
+        &-slider {
             max-width: 260px;
             width: 100%;
+
         }
     }
 
@@ -928,8 +1038,16 @@ button {
     }
 
     &-sidebar {
-        flex: 0 1 300px;
-        &__btn{
+        flex: 0 1 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &__title {
+            // margin-bottom: 20px;
+        }
+
+        &__btn {
             margin-top: 10px;
             width: 100%;
         }
@@ -1026,7 +1144,7 @@ button {
     }
 
     &-sidebar {
-        flex: 0 0 365px;
+        flex: 0 0 335px;
         display: flex;
         flex-direction: column;
         gap: 30px;
@@ -1098,6 +1216,45 @@ button {
 .academic {
     &__title {
         margin-bottom: 20px;
+    }
+
+    &-programs {
+        background-color: #fff;
+        padding: 10px;
+        position: relative;
+        // z-index: 5;
+        &__title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+
+            &>span {
+                font-weight: 500;
+                color: base.$color-black;
+            }
+        }
+
+        &-list {
+            border-radius: 20px;
+            left: 0;
+            right: 0;
+            position: absolute;
+            z-index: 1;
+            background-color: #fff;
+            top: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 0px;
+            overflow: hidden;
+            transition: all 0.3s;
+
+            &--open {
+                padding: 15px;
+                max-height: 1000000px;
+            }
+        }
     }
 }
 
@@ -1217,14 +1374,17 @@ button {
     }
 }
 
-.filter{
-    &-item{
-        &__title{
+.filter {
+    &-item {
+        &__title {
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
         }
     }
-    
-    &-radio{
+
+    &-radio {
         display: flex;
         flex-direction: column;
         gap: 5px;

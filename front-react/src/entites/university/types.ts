@@ -1,10 +1,12 @@
 
 export interface IGallery {
     id: number,
-    img: string
+    img: string,
+    small_img: string
 }
 
-export interface IAcademicPrograms {
+export interface IAcademicProgram {
+    id: number
     name: string,
     form_education: string,
 }
@@ -22,11 +24,22 @@ export interface IUniversity {
     information: string,
     created_at: string,
     updated_at: string,
-    country: string
+    country: ICountry
 }
 
 export interface IUniversityAll extends IUniversity {
     gallery: IGallery[],
-    academic_programs: IAcademicPrograms[]
+    academic_programs: IAcademicProgram[]
+}
 
+export interface ICountry {
+    id: number,
+    name: string
+}
+
+
+export interface Ipropgram {
+    id: number,
+    name: string,
+    form_education: "Магистратура" | "Бакалавриат" | "Докторантура" | "Языковые курсы" | "Подготовка к университету",
 }

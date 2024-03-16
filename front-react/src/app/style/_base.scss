@@ -3,15 +3,15 @@ $color-gray: #7A7A7A;
 $color-blue: rgb(82, 191, 255);
 $color-red: #FE0002;
 
-.text-blue{
+.text-blue {
     color: $color-blue;
 }
 
-.text-black{
+.text-black {
     color: $color-black;
 }
 
-.bg-blue{
+.bg-blue {
     background-color: $color-blue;
 }
 
@@ -29,4 +29,22 @@ $color-red: #FE0002;
     height: $height;
     content: $content;
     position: absolute;
+}
+
+*::-webkit-scrollbar {
+    width: 3px;
+    /* ширина scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: $color-gray;
+    /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $color-blue;
+    /* цвет плашки */
+    border-radius: 30px;
+    /* закругления плашки */
+    // border: 3px solid orange;  /* padding вокруг плашки */
 }

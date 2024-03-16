@@ -21,6 +21,7 @@ class UniversityGalleryFactory extends Factory
     {
         return [
             'img' => fake()->imageUrl(850, 300),
+            'small_img' => fake()->imageUrl(260, 120),
             'university_id' => University::inRandomOrder()->first()->id,
         ];
     }

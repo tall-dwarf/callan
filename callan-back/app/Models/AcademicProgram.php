@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\University> $universities
  * @property-read int|null $universities_count
- * @method static \Database\Factories\AcademicProgramsFactory factory($count = null, $state = [])
+ * @method static \Database\Factories\AcademicProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicPrograms newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicPrograms newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicPrograms query()
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicPrograms whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class AcademicPrograms extends Model
+class AcademicProgram extends Model
 {
     use HasFactory;
 

@@ -2,10 +2,11 @@ import BtnIcon from "../ui/BtnIcon";
 import { useState } from "react";
 
 type AccordionProps = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    title: string
 }
 
-export default function Accordion({ children }: AccordionProps) {
+export default function Accordion({ children, title }: AccordionProps) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -14,7 +15,7 @@ export default function Accordion({ children }: AccordionProps) {
                 <BtnIcon onClick={() => setIsOpen(true)} icon={"plus"} className="accordion-buttons__plus" />
                 <BtnIcon onClick={() => setIsOpen(false)} icon={"minus"} className="accordion-buttons__minus" />
             </div>
-            <div className="accordion-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod?</div>
+            <div className="accordion-header">{title}</div>
             <div
                 className={"accordion-content " + (isOpen ? "accordion-content--open" : "")}>
                 {

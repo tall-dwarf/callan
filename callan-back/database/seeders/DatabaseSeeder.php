@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Country;
 use Illuminate\Database\Seeder;
 use App\Models\University;
-use App\Models\AcademicPrograms;
+use App\Models\AcademicProgram;
 use App\Models\UniversityGallery;
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Country::factory(20)->create();
 
-        $programs = AcademicPrograms::factory(300)->create();
+        $programs = AcademicProgram::factory(200)->create();
 
-        University::factory(150)->create()->each(function ($university) use ($programs) {
-            $university->academicPrograms()->attach($programs->random(rand(20, 50))->pluck('id')->toArray());
+        University::factory(250)->create()->each(function ($university) use ($programs) {
+            $university->academicPrograms()->attach($programs->random(rand(10, 30))->pluck('id')->toArray());
+            UniversityGallery::factory(5)->create(['university_id' => $university['id']]);
         });
-
-        UniversityGallery::factory(70)->create();
 
     }
 }

@@ -1,29 +1,43 @@
 import { useEffect, useState } from "react"
-import { loadUniversities } from "../../entites/university/api"
+import { CompositeParams, LoadUniversitiesParams, PrimitivesPrams, loadUniversities } from "../../entites/university/api"
 import { IUniversityAll } from "../../entites/university/types"
 import UniversitiesItem from "../../entites/university/ui/UniversitiesItem"
 import UniversitiesForm from "../../entites/university/ui/UniversitiesForm"
 import useForm from "../../shared/hooks/useForm"
 import CustomButton from "../../shared/ui/CustomButton"
-import { GiGrowth } from "react-icons/gi";
-import FilterRadio from "../../widgets/FilterRadio"
-import { ratingData } from "./data"
+import UniversitiesFilter from "../../entites/university/ui/UniversitiesFilter"
+import useCheckboxes from "../../shared/hooks/useCheckboxes"
 
 export default function Universities() {
     const [universities, setUniversities] = useState<IUniversityAll[]>([])
-    const universitiesFrom = useForm({ sortOrder: 'asc', sortField: '', name: '' });
-    const filterForm = useForm({ rating: 0, });
-    const [page, setPage] = useState(1);
+    const primitive = useForm<PrimitivesPrams>({ page: 1, name: '', price: 0, rating: 0, sortField: '', sortOrder: '' });
 
-    useEffect(() => {
-        loadUniversities({ page: page, ...universitiesFrom.formState, ...filterForm.formState }).then(uni => setUniversities([...uni, ...universities]))
-    }, [page])
+    const checkboxData = useCheckboxes({ countries: [], programs: [] });
+    const [totalPage, setTotalPage] = useState(0)
+
+
+    const loadData = async (oldData: IUniversityAll[] = [], params?: PrimitivesPrams) => {
+        const data = await loadUniversities({ ...primitive.formState, ...checkboxData.data, ...params })
+        setUniversities([...oldData, ...data.data])
+        setTotalPage(Math.ceil(data.total / 10))
+        return data
+    }
 
     const filtred = () => {
-        loadUniversities({ page: page, ...universitiesFrom.formState, ...filterForm.formState }).then(uni => {
-            setUniversities(uni)
-        })
+        loadData()
+        primitive.updateState('page', 1)
     }
+
+    const loadMore = async () => {
+        const newPage = primitive.formState.page + 1
+        loadData(universities, { page: newPage })
+        primitive.updateState('page', newPage)
+    }
+
+
+    useEffect(() => {
+        loadData().then(loadData => setTotalPage(Math.ceil(loadData.total / 10)))
+    }, [])
 
     return (
 
@@ -33,35 +47,26 @@ export default function Universities() {
                     <h2 className="universities__title">Университеты</h2>
                     <div className="universities-content">
                         <div className="universities-sidebar">
-                            <h3>Фильтры</h3>
-                            <div className="filter-item">
-                                <span className="filter-item__title text-black">Страны</span>
-                            </div>
-                            <FilterRadio onChange={(newraiting) => filterForm.updateState("rating", newraiting)} radioData={ratingData}>
-                                <><GiGrowth size={20} fill="#52bfff" /> Рейтинг</>
-                            </FilterRadio>
-                            {/* <div className="filter-item">
-                                <span className="filter-item__title text-black">Рейтинг</span>
-                                <div className="filter-radio">
-                                    <RadioItem onChange={() => filterForm.updateState("raiting", 1)} name="raiting" text="1" />
-                                    <RadioItem onChange={() => filterForm.updateState("raiting", 1)} name="raiting" text="2" />
-                                    <RadioItem onChange={() => filterForm.updateState("raiting", 1)} name="raiting" text="3" />
-                                    <RadioItem onChange={() => filterForm.updateState("raiting", 1)} name="raiting" text="4" />
-                                    <RadioItem onChange={() => filterForm.updateState("raiting", 1)} name="raiting" text="5" />
-                                </div>
-                            </div> */}
+                            <h3 className="universities-sidebar__title">Фильтры</h3>
+                            <UniversitiesFilter
+                                onCheckbox={checkboxData.updateData}
+                                onUpdate={(key, value) => primitive.updateState(key, value)} />
+
                             <CustomButton className="universities-sidebar__btn" onClick={() => filtred()} icon="search" text="Поиск" />
                         </div>
                         <div className="universities-main">
                             <UniversitiesForm
-                                onSort={(order, field) => universitiesFrom.manyUpdateState({ ...universitiesFrom.formState, sortOrder: order, sortField: field })}
-                                onSearch={(text) => universitiesFrom.updateState('name', text)} />
+                                onSort={(order, field) => primitive.manyUpdateState({ ...primitive.formState, sortOrder: order, sortField: field })}
+                                onSearch={(text) => primitive.updateState('name', text)} />
                             <ul className="universities-list">
                                 {
                                     universities.map((univ) => <UniversitiesItem key={univ.id} university={univ} />)
                                 }
                             </ul>
-                            <CustomButton className="universities-main__btn" onClick={() => setPage((page) => page + 1)} icon="plus" text="загрузить ещё" />
+                            {
+                                primitive.formState.page < totalPage ? <CustomButton className="universities-main__btn" onClick={() => loadMore()} icon="plus" text="Загрузить ещё" /> : ''
+                            }
+
                         </div>
                     </div>
                 </div>

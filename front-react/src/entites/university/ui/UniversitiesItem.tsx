@@ -15,7 +15,7 @@ export default function UniversitiesItem({ university }: UniversitiesItemProps) 
                     university.gallery.map(g =>
                         <SwiperSlide key={g.id}>
                             <div className="universities-item-slider-item">
-                                <img src={g.img} alt="" />
+                                <img src={g.small_img} alt="" />
                             </div>
                         </SwiperSlide>
                     )
@@ -37,12 +37,12 @@ export default function UniversitiesItem({ university }: UniversitiesItemProps) 
                 </ul>
                 <div className="">
                     <i className="fa-solid fa-flag fa-xl text-blue"></i>
-                    <span>{university.country}</span>
+                    <span>{university.country.name}</span>
                 </div>
             </div>
             <div className="universities-item-info">
-                <h4 className="text-blue universities-item-info__title">от {Math.round(university.price_year / 4)} €</h4>
-                <h4>за семестр</h4>
+                <h4 className="text-blue universities-item-info__title">от {university.price_year} €</h4>
+                <h4>за год</h4>
             </div>
         </li>
     )

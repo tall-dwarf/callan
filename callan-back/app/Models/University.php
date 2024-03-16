@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -50,11 +52,20 @@ class University extends Model
 
     public function academicPrograms()
     {
-        return $this->belongsToMany(AcademicPrograms::class, 'university_academic_program', 'university_id', 'academic_program_id');
+        return $this->belongsToMany(AcademicProgram::class, 'university_academic_programs', 'university_id', 'academic_program_id');
     }
 
     public function gallery()
     {
         return $this->hasMany(UniversityGallery::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter){
+        return $filter->apply($builder);
     }
 }
