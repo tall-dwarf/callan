@@ -1,9 +1,10 @@
 import { FaPhone } from "react-icons/fa6";
-import { MdMessage } from "react-icons/md";
+import { MdMessage, MdNavigateBefore } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { MdNavigateNext } from "react-icons/md";
 
 export const icons = {
     phone: FaPhone,
@@ -11,5 +12,9 @@ export const icons = {
     user: CiUser,
     plus: FaPlus,
     minus: FaMinus,
-    search: FaSearch
+    search: FaSearch,
+    next: MdNavigateNext,
+    pref: MdNavigateBefore,
 }
+
+export const formEducation = ['Бакалавриат', 'Магистратура', 'Докторантура', 'Подготовка к университету', 'Языковые курсы'];

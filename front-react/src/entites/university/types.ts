@@ -11,6 +11,11 @@ export interface IAcademicProgram {
     form_education: string,
 }
 
+export interface IDocument {
+    id: number
+    name: string,
+}
+
 export interface IUniversity {
     id: number,
     name: string,
@@ -27,9 +32,13 @@ export interface IUniversity {
     country: ICountry
 }
 
-export interface IUniversityAll extends IUniversity {
+export interface IUniversityList extends IUniversity {
     gallery: IGallery[],
     academic_programs: IAcademicProgram[]
+}
+
+export interface IUniversityItem extends IUniversityList{
+    documents: IDocument[]
 }
 
 export interface ICountry {

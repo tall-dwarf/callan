@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { CompositeParams, LoadUniversitiesParams, PrimitivesPrams, loadUniversities } from "../../entites/university/api"
-import { IUniversityAll } from "../../entites/university/types"
+import { PrimitivesPrams, loadUniversities } from "../../entites/university/api"
+import { IUniversityList } from "../../entites/university/types"
 import UniversitiesItem from "../../entites/university/ui/UniversitiesItem"
 import UniversitiesForm from "../../entites/university/ui/UniversitiesForm"
 import useForm from "../../shared/hooks/useForm"
@@ -9,14 +9,13 @@ import UniversitiesFilter from "../../entites/university/ui/UniversitiesFilter"
 import useCheckboxes from "../../shared/hooks/useCheckboxes"
 
 export default function Universities() {
-    const [universities, setUniversities] = useState<IUniversityAll[]>([])
+    const [universities, setUniversities] = useState<IUniversityList[]>([])
     const primitive = useForm<PrimitivesPrams>({ page: 1, name: '', price: 0, rating: 0, sortField: '', sortOrder: '' });
-
     const checkboxData = useCheckboxes({ countries: [], programs: [] });
     const [totalPage, setTotalPage] = useState(0)
 
 
-    const loadData = async (oldData: IUniversityAll[] = [], params?: PrimitivesPrams) => {
+    const loadData = async (oldData: IUniversityList[] = [], params?: PrimitivesPrams) => {
         const data = await loadUniversities({ ...primitive.formState, ...checkboxData.data, ...params })
         setUniversities([...oldData, ...data.data])
         setTotalPage(Math.ceil(data.total / 10))

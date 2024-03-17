@@ -24,6 +24,17 @@ class UniversityController extends Controller
         return response()->json($universities->paginate(10), 200);
     }
 
+    public function show($id)
+    {
+        $university = University::query()
+            ->with('country')
+            ->with('gallery')
+            ->with('academicPrograms')
+            ->with('documents')
+            ->findOrFail($id);
+        return response()->json($university, 200);
+    }
+
     public function store(StoreUniversityRequest $request)
     {
         //

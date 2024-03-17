@@ -65,6 +65,11 @@ class University extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function documents()
+    {
+        return $this->belongsToMany(Document::class);
+    }
+
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }

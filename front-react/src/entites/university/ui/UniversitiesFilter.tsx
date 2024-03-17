@@ -9,6 +9,7 @@ import useCache from "../../../shared/hooks/useCache";
 import { IAcademicProgram, ICountry } from "../types";
 import { FaFlag } from "react-icons/fa";
 import AcademicPrograms from "./AcademicPrograms";
+import { formEducation } from "../../../app/data";
 
 type UniversitiesFilterProps = {
     onUpdate: (key: keyof PrimitivesPrams, value: string | number) => void,
@@ -29,8 +30,6 @@ export default function UniversitiesFilter({ onUpdate, onCheckbox }: Universitie
 
         return res
     }
-
-    const formEducation = ['Бакалавриат', 'Магистратура', 'Докторантура', 'Подготовка к университету', 'Языковые курсы'];
 
     return (
         <div className="universities-filter">

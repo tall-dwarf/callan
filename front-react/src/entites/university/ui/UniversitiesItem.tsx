@@ -1,8 +1,9 @@
-import { IUniversityAll } from "../types"
+import { IUniversityList } from "../types"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import BtnIcon from "../../../shared/ui/BtnIcon";
+import { Link } from "react-router-dom";
 type UniversitiesItemProps = {
-    university: IUniversityAll
+    university: IUniversityList
 }
 
 export default function UniversitiesItem({ university }: UniversitiesItemProps) {
@@ -27,7 +28,7 @@ export default function UniversitiesItem({ university }: UniversitiesItemProps) 
                 </SwiperSlide>
             </Swiper>
             <div className="universities-item-content">
-                <h4>{university.id} {university.name}</h4>
+                <h4>{university.id} <Link to={`${university.id}`}>{university.name}</Link></h4>
                 <ul className="universities-item-list">
                     <li><i className="fa-solid fa-book fa-xl text-blue"></i></li>
                     {

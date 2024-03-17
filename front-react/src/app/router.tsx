@@ -11,7 +11,7 @@ export const routerConfig = {
     about: '/about',
     consultation: '/consultation',
     universities: '/universities',
-    university: '/university/:universityId',
+    university: '/universities/:universityId',
 }
 
 
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: routerConfig.university,
-                element: <University />
+                element: <University />,
             },
 
         ]

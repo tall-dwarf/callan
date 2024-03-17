@@ -595,6 +595,17 @@ button {
 
 // University
 .university {
+    &-carousel{
+        padding: 100px 0px;
+        &-inner{
+            position: relative;
+        }
+        &-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+        }
+    }
     &-slider {
         overflow: hidden;
         width: 60%;
@@ -1214,6 +1225,19 @@ button {
 
 // Academic
 .academic {
+    &-item{
+        flex: 0 1 20%;
+        margin-bottom: 6px;
+    }
+    &-list{
+        display: flex;
+        flex-wrap: wrap;
+        // gap: 20px;
+        justify-content: space-between;
+    }
+    &-item{
+
+    }
     &__title {
         margin-bottom: 20px;
     }
@@ -1222,6 +1246,7 @@ button {
         background-color: #fff;
         padding: 10px;
         position: relative;
+
         // z-index: 5;
         &__title {
             display: flex;
@@ -1333,8 +1358,9 @@ button {
     padding: 27px;
     border-radius: 20px;
     position: relative;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
 
-    // overflow: hidden;
     &-content {
         max-height: 0px;
         transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
@@ -1388,6 +1414,19 @@ button {
         display: flex;
         flex-direction: column;
         gap: 5px;
+    }
+}
+
+
+.slider{
+    &-btn{
+        z-index: 2;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        &-next{
+            right: 0;
+        }
     }
 }
 

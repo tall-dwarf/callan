@@ -1,5 +1,5 @@
 import { BASE_URL } from "../../shared/api"
-import { IUniversity, IUniversityAll } from "./types"
+import { IUniversity, IUniversityItem, IUniversityList } from "./types"
 import axios from 'axios';
 
 export type PrimitivesPrams = {
@@ -19,12 +19,17 @@ export type CompositeParams = {
 export type LoadUniversitiesParams = CompositeParams & PrimitivesPrams
 
 type LoadUniversitiesResponse = {
-    data: IUniversityAll[],
+    data: IUniversityList[],
     total: number,
     current_page: number
 }
 
 export const loadUniversities = async (params: LoadUniversitiesParams): Promise<LoadUniversitiesResponse> => {
     const response = await axios.get(BASE_URL + 'university', {params: params})
+    return response.data
+}
+
+export const loadUniversity = async (id: number): Promise<IUniversityItem> => {
+    const response = await axios.get(BASE_URL + `university/${id}`)
     return response.data
 }
