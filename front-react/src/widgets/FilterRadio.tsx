@@ -21,7 +21,7 @@ export default function FilterRadio<T>({ radioData, onChange, children }: Filter
             <span className="filter-item__title text-black">{children}</span>
             <div className="filter-radio">
                 {
-                    radioData.map(r => <RadioItem key={r.id} onChange={() => onChange(r.value)} name={id} text={r.text} />)
+                    radioData.map(r => <RadioItem key={r.id} onChange={() => onChange(r.value)} name={id} label={r.text} />)
                 }
             </div>
         </div>

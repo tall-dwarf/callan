@@ -5,6 +5,8 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { MdNavigateNext } from "react-icons/md";
+import { PiCalendarFill } from "react-icons/pi";
+import { FaCity } from "react-icons/fa";
 
 export const icons = {
     phone: FaPhone,
@@ -15,6 +17,8 @@ export const icons = {
     search: FaSearch,
     next: MdNavigateNext,
     pref: MdNavigateBefore,
+    calendar: PiCalendarFill,
+    city: FaCity,
 }
 
 export const formEducation = ['Бакалавриат', 'Магистратура', 'Докторантура', 'Подготовка к университету', 'Языковые курсы'];

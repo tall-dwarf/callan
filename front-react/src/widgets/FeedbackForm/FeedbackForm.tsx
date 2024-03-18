@@ -1,8 +1,11 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useContext, useState } from "react"
 import FormItem from "../../shared/ui/FormItem"
 import BtnIcon from "../../shared/ui/CustomButton";
 import useForm from "../../shared/hooks/useForm";
 import { Validator } from "../../shared/helpers/Validator";
+import Loader from "../../shared/ui/Loader";
+import { FormContext } from "../../shared/context/formContext";
+import { sendFeedbackForm } from "./api";
 
 export type FeedbackFormSate = {
     name: string,
@@ -13,9 +16,10 @@ export type FeedbackFormSate = {
 export default function FeedbackForm() {
     const { formState, updateState } = useForm({ name: '', phone: '', comment: '', })
     const [formErrors, setFormErrors] = useState<{ [K in keyof FeedbackFormSate]?: string | null }>({ name: null, phone: null })
-
-
-    const formSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const [isLoad, setIsLoad] = useState(false)
+    const formContext = useContext(FormContext)
+    
+    const formSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const validator = new Validator()
         const validationData = {
@@ -24,12 +28,17 @@ export default function FeedbackForm() {
         }
 
         setFormErrors({ ...formErrors, ...validationData })
+        if (Object.values(validationData).join("").length !== 0) return
 
-        if (Object.values(validationData).join("").length === 0) {
-            console.log(123);
-
+        try{
+            setIsLoad(true)
+            await sendFeedbackForm(formState)
+            formContext?.onSuccess()
+        }catch{
+            formContext?.onError()
         }
 
+        setIsLoad(false)
     }
 
     return (
@@ -56,8 +65,10 @@ export default function FeedbackForm() {
                     type={"text"}
                     icon={"message"}
                     label="Дополнительные комментарии" />
-
-                <BtnIcon icon="message" text="Отправить" onClick={() => 123} />
+                {
+                    isLoad ? <Loader /> : <BtnIcon icon="message" text="Отправить" onClick={() => 123} />
+                }
+                 
             </form>
         </div>
         </div>

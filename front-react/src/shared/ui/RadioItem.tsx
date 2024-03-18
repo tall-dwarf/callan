@@ -2,18 +2,18 @@ import { useId } from "react"
 
 
 type RadioItemProps = {
-    text: string,
+    label: string,
     name: string,
     onChange: () => void
 }
 
-export default function RadioItem({ text, name, onChange }: RadioItemProps) {
+export default function RadioItem({ label, name, onChange }: RadioItemProps) {
     const id = useId()
 
     return (
         <div className="radio-item">
             <input onChange={() => onChange()} name={name} id={id} type="radio" />
-            <label htmlFor={id}>{text}</label>
+            <label htmlFor={id}>{label}</label>
         </div>
     )
 }

@@ -18,6 +18,13 @@ export class Validator{
         return this
     }
 
+    public isEmail(){
+        if(!/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(this.value)){
+            this.messages = 'Неправильный формат почты'
+        }
+        return this
+    }
+
     public isRequered(){
         if(this.value.length < 2){
             this.messages = 'Обязательное поле'

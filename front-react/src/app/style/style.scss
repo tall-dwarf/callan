@@ -15,11 +15,14 @@ img {
 strong {
     font-weight: 600;
 }
-
+html,
+body, #root {
+	height: 100%;
+}
 body {
     background: url("./images/body-bg.png");
     background-size: cover;
-    overflow-x: hidden // overflow: hidden;
+    overflow-x: hidden; // overflow: hidden;
 }
 
 .tree-top-left {
@@ -44,6 +47,16 @@ body {
     right: 0px;
     z-index: 0;
     transform: translateY(50%);
+}
+
+.main-wrapper{
+    display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.content{
+    flex: 1 0 auto;
 }
 
 
@@ -595,17 +608,20 @@ button {
 
 // University
 .university {
-    &-carousel{
+    &-carousel {
         padding: 100px 0px;
-        &-inner{
+
+        &-inner {
             position: relative;
         }
-        &-item{
+
+        &-item {
             display: flex;
             align-items: center;
-            justify-content: center;   
+            justify-content: center;
         }
     }
+
     &-slider {
         overflow: hidden;
         width: 60%;
@@ -815,7 +831,25 @@ button {
     display: flex;
     flex-direction: column;
     width: 100%;
+
     // gap: 3px;
+    &-result {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    &-successful {
+
+        &__img {
+            width: 250px;
+            // max-width: 10%;
+        }
+    }
 
     &__btn {
         max-width: 240px;
@@ -925,7 +959,7 @@ button {
 .footer {
     background-color: #fff;
     padding: 50px 0px 70px;
-
+    flex: 0 0 auto;
     &-inner {
         display: flex;
         flex-direction: column;
@@ -1225,19 +1259,20 @@ button {
 
 // Academic
 .academic {
-    &-item{
+    &-item {
         flex: 0 1 20%;
         margin-bottom: 6px;
     }
-    &-list{
+
+    &-list {
         display: flex;
         flex-wrap: wrap;
         // gap: 20px;
         justify-content: space-between;
     }
-    &-item{
 
-    }
+    &-item {}
+
     &__title {
         margin-bottom: 20px;
     }
@@ -1287,7 +1322,7 @@ button {
 .consultation {
     padding-top: 60px;
     padding-bottom: 60px;
-
+    position: relative;
     &__title {
         margin-bottom: 40px;
         text-align: center;
@@ -1296,7 +1331,13 @@ button {
     &-form {
         display: flex;
         flex-direction: column;
-        gap: 25px;
+
+        &__btn {
+            max-width: 300px;
+            margin: 10px auto 0px;
+        }
+
+        // gap: 25px;
     }
 }
 
@@ -1418,17 +1459,52 @@ button {
 }
 
 
-.slider{
-    &-btn{
+.slider {
+    &-btn {
         z-index: 2;
         top: 50%;
         transform: translateY(-50%);
         position: absolute;
-        &-next{
+
+        &-next {
             right: 0;
         }
     }
 }
+
+.loader {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // z-index: 3;
+    // background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-item {
+        width: 48px;
+        height: 48px;
+        border: 5px solid base.$color-blue;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 @media (max-width: 501px) {
 
