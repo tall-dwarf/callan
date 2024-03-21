@@ -3,16 +3,18 @@ import FormItem from "../../shared/ui/FormItem"
 import RadioItem from "../../shared/ui/RadioItem"
 import { RiEnglishInput } from "react-icons/ri";
 import CustomButton from "../../shared/ui/CustomButton";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Validator } from "../../shared/helpers/Validator";
 import { ConsultationData, sendConsutation } from "./api";
-import { FormContext } from "../../shared/context/formContext";
 import Loader from "../../shared/ui/Loader";
+import FormStatus from "../../shared/hocs/FormStatus";
 
 export default function ConsultationForm() {
     const consultationForm = useForm<ConsultationData>({ name: '', date: '', city: '', phone: '', email: '', english: '' })
     const consultationErrors = useForm({ name: '', phone: '', email: '' })
-    const formContext = useContext(FormContext)
+
+    const [formStatus, setFormStatus] = useState<"successful" | 'error' | 'work'>('work')
+
     const [isLoad, setIsLoad] = useState(false)
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -30,14 +32,16 @@ export default function ConsultationForm() {
         try {
             setIsLoad(true)
             await sendConsutation(consultationForm.formState)
-            setIsLoad(false)
-            formContext?.onSuccess()
+            setFormStatus('successful')
         } catch {
-            formContext?.onError()
+            setFormStatus('error')
         }
+
+        setIsLoad(false)
     }
 
     return (
+        <FormStatus resetForm={() => setFormStatus('work')} formStatus={formStatus}>
         <form onSubmit={(event) => onSubmit(event)} className="consultation-form">
 
             <FormItem
@@ -73,8 +77,7 @@ export default function ConsultationForm() {
             {
                 isLoad ? <Loader /> : <CustomButton className="consultation-form__btn" onClick={() => console.log()} text="Отправить" icon="message" />
             }
-            
-            
         </form>
+        </FormStatus>
     )
 }

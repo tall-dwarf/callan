@@ -1,24 +1,18 @@
-import { useState } from "react";
+import React from "react";
 import FormSuccessful from "../ui/FormSuccessful";
 import FormError from "../ui/FormError";
 import { FormContext } from "../context/formContext";
 
 type FormStatusProps = {
-    children: JSX.Element
+    children: React.ReactNode,
+    formStatus: "successful" | 'error' | 'work',
+    resetForm: () => void
 }
 
-export default function FormStatus({ children }: FormStatusProps) {
-    const [formStatus, setFormStatus] = useState<"successful" | 'error' | 'work'>('work')
-
+export default function FormStatus({ children, formStatus, resetForm }: FormStatusProps) {
 
     if (formStatus === 'successful') return <FormSuccessful />
-    if (formStatus === 'error') return <FormError resetForm={() => setFormStatus('work')} />
+    if (formStatus === 'error') return <FormError resetForm={() => resetForm()} />
 
-    return <FormContext.Provider
-        value={{
-            onError: () => setFormStatus('error'),
-            onSuccess: () => setFormStatus('successful'),
-        }}>
-        <>{children}</>
-        </FormContext.Provider>
+    return children
 }
