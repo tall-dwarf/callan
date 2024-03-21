@@ -9,7 +9,6 @@ import { useState } from "react";
 import { ModalContext } from "../shared/context/modalcontext";
 import Modal from "../shared/hocs/Modal";
 import FeedbackForm from "../widgets/FeedbackForm/FeedbackForm";
-import FormStatus from "../shared/hocs/FormStatus";
 
 export default function Root() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -22,7 +21,7 @@ export default function Root() {
 
     return (
         <>
-            <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} ><FormStatus><FeedbackForm /></FormStatus></Modal>
+            <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} ><FeedbackForm /></Modal>
             <div className="main-wrapper">
 
                 <header className="header">

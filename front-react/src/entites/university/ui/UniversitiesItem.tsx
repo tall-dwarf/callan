@@ -1,7 +1,7 @@
 import { IUniversityList } from "../types"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import BtnIcon from "../../../shared/ui/BtnIcon";
 import { Link } from "react-router-dom";
+
 type UniversitiesItemProps = {
     university: IUniversityList
 }

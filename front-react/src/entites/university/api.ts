@@ -1,5 +1,5 @@
 import { BASE_URL } from "../../shared/api"
-import { IUniversity, IUniversityItem, IUniversityList } from "./types"
+import { IUniversityItem, IUniversityList } from "./types"
 import axios from 'axios';
 
 export type PrimitivesPrams = {

@@ -1,7 +1,6 @@
 import React from "react";
 import FormSuccessful from "../ui/FormSuccessful";
 import FormError from "../ui/FormError";
-import { FormContext } from "../context/formContext";
 
 type FormStatusProps = {
     children: React.ReactNode,
