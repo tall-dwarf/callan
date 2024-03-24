@@ -17,19 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        Country::factory(20)->create();
-//
-//        $programs = AcademicProgram::factory(200)->create();
-//
-//        University::factory(250)->create()->each(function ($university) use ($programs) {
-//            $university->academicPrograms()->attach($programs->random(rand(10, 30))->pluck('id')->toArray());
-//            UniversityGallery::factory(5)->create(['university_id' => $university['id']]);
-//        });
+        Country::factory(20)->create();
 
+        $programs = AcademicProgram::factory(200)->create();
         $documents = Document::factory(30)->create();
 
-        $universities = University::all();
-        $universities->each(function ($university) use ($documents) {
+        University::factory(250)->create()->each(function ($university) use ($programs, $documents) {
+            $university->academicPrograms()->attach($programs->random(rand(10, 30))->pluck('id')->toArray());
+
+            UniversityGallery::factory(5)->create(['university_id' => $university['id']]);
+
             $university->documents()->attach($documents->random(rand(3, 6))->pluck('id')->toArray());
         });
 
