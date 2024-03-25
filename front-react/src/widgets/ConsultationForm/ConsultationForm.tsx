@@ -1,83 +1,105 @@
-import useForm from "../../shared/hooks/useForm"
+
 import FormItem from "../../shared/ui/FormItem"
 import RadioItem from "../../shared/ui/RadioItem"
 import { RiEnglishInput } from "react-icons/ri";
 import CustomButton from "../../shared/ui/CustomButton";
-import { FormEvent, useState } from "react";
-import { Validator } from "../../shared/helpers/Validator";
-import { ConsultationData, sendConsutation } from "./api";
+import { sendConsutation } from "./api";
 import Loader from "../../shared/ui/Loader";
-import FormStatus from "../../shared/hocs/FormStatus";
+import * as yup from "yup"
+import { SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"
+import useForm from "../../shared/hooks/useForm";
+import FormSuccessful from "../../shared/ui/FormSuccessful";
+
+export type ConsultationForm = {
+    name: string,
+    date?: string,
+    city?: string,
+    phone: string,
+    email: string,
+    english?: string
+}
+
+const schema = yup.object({
+    name: yup.string().required('Поле обязательно для заполнения'),
+    email: yup.string().required('Поле обязательно для заполнения').email('Неверный формат email'),
+    phone: yup.string().required('Поле обязательно для заполнения').matches(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/, 'Неверный формат ввода '),
+    city: yup.string(),
+    english: yup.string(),
+    date: yup.string(),
+}).required()
 
 export default function ConsultationForm() {
-    const consultationForm = useForm<ConsultationData>({ name: '', date: '', city: '', phone: '', email: '', english: '' })
-    const consultationErrors = useForm({ name: '', phone: '', email: '' })
+    const { form: { formState, register, setValue, handleSubmit }, load, successful, error } = useForm(yupResolver(schema))
 
-    const [formStatus, setFormStatus] = useState<"successful" | 'error' | 'work'>('work')
+    const onSubmit: SubmitHandler<ConsultationForm> = async (data) => {
+        load.setIsLoad(true)
 
-    const [isLoad, setIsLoad] = useState(false)
-
-    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-
-        const validator = new Validator()
-        let errorsData = {
-            name: validator.setValue(consultationForm.formState.name).isRequered().getmessage(),
-            phone: validator.setValue(consultationForm.formState.phone).isPhone().getmessage(),
-            email: validator.setValue(consultationForm.formState.email).isEmail().getmessage(),
-        }
-        consultationErrors.manyUpdateState(errorsData)
-        if (Object.values(errorsData).join("").length !== 0) return null
-        
         try {
-            setIsLoad(true)
-            await sendConsutation(consultationForm.formState)
-            setFormStatus('successful')
+            await sendConsutation(data)
+            successful.setSuccessful(true)
         } catch {
-            setFormStatus('error')
+            successful.setSuccessful(false)
+            error.setError("Произошла ошибка отправки формы")
         }
 
-        setIsLoad(false)
+        load.setIsLoad(false)
     }
 
+    if (successful.successful) return <FormSuccessful />
+
     return (
-        <FormStatus resetForm={() => setFormStatus('work')} formStatus={formStatus}>
-        <form onSubmit={(event) => onSubmit(event)} className="consultation-form">
+        <form onSubmit={handleSubmit(onSubmit)} className="consultation-form">
 
             <FormItem
-                error={consultationErrors.formState.name}
+                icon={'user'}
                 type="text"
-                onChange={(value) => consultationForm.updateState('name', value)}
-                icon="user" label="ФИО" />
-
-            <FormItem type="date" onChange={(value) => consultationForm.updateState('date', value)} icon="calendar" label="Календарь" />
-
-            <FormItem type="text" onChange={(value) => consultationForm.updateState('city', value)} icon="city" label="Город" />
-
+                error={formState.errors.name?.message}
+                label="Имя"
+                register={register} registerName="name" />
             <FormItem
-                error={consultationErrors.formState.phone}
+                icon={'user'}
                 type="text"
-                onChange={(value) => consultationForm.updateState('phone', value)}
-                icon="phone" label="Телефон" />
+                error={formState.errors.phone?.message}
+                label="Телефон"
+                register={register} registerName="phone" />
 
             <FormItem
-                error={consultationErrors.formState.email}
+                icon={'user'}
+                type="date"
+                error={formState.errors.date?.message}
+                label="Дата"
+                register={register} registerName="date" />
+
+            <FormItem
+                icon={'user'}
+                type="text"
+                error={formState.errors.city?.message}
+                label="Город"
+                register={register} registerName="city" />
+
+            <FormItem
+                icon={'user'}
                 type="email"
-                onChange={(value) => consultationForm.updateState('email', value)}
-                icon="message" label="Почта" />
+                error={formState.errors.email?.message}
+                label="Почта"
+                register={register} registerName="email" />
+
+
+
 
             <div className="form-item">
                 <label className="form-item__label"><RiEnglishInput size={20} fill="rgb(82, 191, 255)" /> Уровень английского</label>
                 <div className="radio-list">
-                    <RadioItem onChange={() => consultationForm.updateState('english', "A1-A2")} name="english" label="Начинающий (А1 - А2)" />
-                    <RadioItem onChange={() => consultationForm.updateState('english', "B1-B2")} name="english" label="Начинающий (B1 - B2)" />
-                    <RadioItem onChange={() => consultationForm.updateState('english', "C1-C2")} name="english" label="Начинающий (C1 - C2)" />
+                    <RadioItem onChange={() => setValue('english', "A1-A2")} name="english" label="Начинающий (А1 - А2)" />
+                    <RadioItem onChange={() => setValue('english', "B1-B2")} name="english" label="Начинающий (B1 - B2)" />
+                    <RadioItem onChange={() => setValue('english', "C1-C2")} name="english" label="Начинающий (C1 - C2)" />
                 </div>
             </div>
             {
-                isLoad ? <Loader /> : <CustomButton className="consultation-form__btn" onClick={() => console.log()} text="Отправить" icon="message" />
+                load.isLoad ? <Loader /> : <CustomButton className="consultation-form__btn" onClick={() => console.log()} text="Отправить" icon="message" />
             }
+            <h4 className="text-red">{error.error}</h4>
         </form>
-        </FormStatus>
     )
 }

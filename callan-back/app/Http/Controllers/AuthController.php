@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginAuthRequest;
 use App\Http\Requests\RegisterAuthRequest;
 use App\Models\User;
-use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -25,7 +21,7 @@ class AuthController extends Controller
     {
         $token = auth()->attempt($request->validated());
         if (!$token) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Неверный логин или пароль'], 401);
         }
         return $this->createNewToken($token);
     }
@@ -37,7 +33,8 @@ class AuthController extends Controller
     public function register(RegisterAuthRequest $request): JsonResponse
     {
         $user = User::create([...$request->validated(), 'password' => bcrypt($request->password)]);
-        return response()->json($user, 201);
+        $token = auth()->login($user);
+        return $this->createNewToken($token);
     }
 
     /**
@@ -72,9 +69,7 @@ class AuthController extends Controller
     protected function createNewToken($token): JsonResponse
     {
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
+            'token' => ['access_token' => $token, 'token_type' => 'bearer', 'expires_in' => auth()->factory()->getTTL() * 60,],
             'user' => auth()->user()
         ]);
     }

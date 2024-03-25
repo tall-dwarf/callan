@@ -2,7 +2,7 @@ import { GiGrowth } from "react-icons/gi";
 import FilterRadio from "../../../widgets/FilterRadio";
 import RangeInput from "../../../shared/ui/RangeInput";
 import { FaRegMoneyBillAlt } from "react-icons/fa";
-import { PrimitivesPrams, CompositeParams } from "../api";
+import { UniversitiesParams } from "../api";
 import { ratingData } from "../data";
 import SearchAndCheckbox from "../../../shared/ui/SearchAndCheckbox";
 import useCache from "../../../shared/hooks/useCache";
@@ -10,15 +10,16 @@ import { IAcademicProgram, ICountry } from "../types";
 import { FaFlag } from "react-icons/fa";
 import AcademicPrograms from "./AcademicPrograms";
 import { formEducation } from "../../../app/data";
+import { BASE_URL } from "../../../shared/api";
 
 type UniversitiesFilterProps = {
-    onUpdate: (key: keyof PrimitivesPrams, value: string | number) => void,
-    onCheckbox: (key: keyof CompositeParams, value: number) => void
+    onUpdate: (key: keyof UniversitiesParams, value: string | number) => void,
+    onCheckbox: (key: 'countries' | 'programs', value: number) => void
 }
 
 export default function UniversitiesFilter({ onUpdate, onCheckbox }: UniversitiesFilterProps) {
-    const counties = useCache<ICountry[]>('http://127.0.0.1:8000/api/county', 'counties', []);
-    const programs = useCache<IAcademicProgram[]>('http://127.0.0.1:8000/api/program', 'programs', []);
+    const counties = useCache<ICountry[]>(BASE_URL + 'county', 'counties', []);
+    const programs = useCache<IAcademicProgram[]>(BASE_URL + 'program', 'programs', []);
 
     const countrisToCheckbox = () => {
         if (!counties.state) return []

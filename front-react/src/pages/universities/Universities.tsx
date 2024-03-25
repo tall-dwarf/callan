@@ -1,42 +1,63 @@
 import { useEffect, useState } from "react"
-import { PrimitivesPrams, loadUniversities } from "../../entites/university/api"
+import { UniversitiesParams, loadUniversities } from "../../entites/university/api"
 import { IUniversityList } from "../../entites/university/types"
 import UniversitiesItem from "../../entites/university/ui/UniversitiesItem"
 import UniversitiesForm from "../../entites/university/ui/UniversitiesForm"
-import useForm from "../../shared/hooks/useForm"
 import CustomButton from "../../shared/ui/CustomButton"
 import UniversitiesFilter from "../../entites/university/ui/UniversitiesFilter"
-import useCheckboxes from "../../shared/hooks/useCheckboxes"
+
 
 export default function Universities() {
     const [universities, setUniversities] = useState<IUniversityList[]>([])
-    const primitive = useForm<PrimitivesPrams>({ page: 1, name: '', price: 0, rating: 0, sortField: '', sortOrder: '' });
-    const checkboxData = useCheckboxes({ countries: [], programs: [] });
-    const [totalPage, setTotalPage] = useState(0)
 
+    const [params, setParams] = useState<UniversitiesParams>({ page: 1, name: '', price: 0, rating: 0, sortField: '', sortOrder: '', countries: [], programs: [] })
+    const [lastPage, setLastPage] = useState(0)
 
-    const loadData = async (oldData: IUniversityList[] = [], params?: PrimitivesPrams) => {
-        const data = await loadUniversities({ ...primitive.formState, ...checkboxData.data, ...params })
-        setUniversities([...oldData, ...data.data])
-        setTotalPage(Math.ceil(data.total / 10))
-        return data
+    const [isLoad, setIsLoad] = useState(false);
+    const [isError, setIserror] = useState(false)
+
+    const updateParam = (key: keyof UniversitiesParams, value: string | number) => {
+        setParams({ ...params, [key]: value })
     }
 
-    const filtred = () => {
-        loadData()
-        primitive.updateState('page', 1)
+    const updateCheckbox = (key: 'countries' | 'programs', value: number) => {
+        if (params[key].includes(value)) {
+            return setParams({ ...params, [key]: params[key].filter(itm => itm != value) })
+        }
+        setParams({ ...params, [key]: [...params[key], value] })
     }
 
-    const loadMore = async () => {
-        const newPage = primitive.formState.page + 1
-        loadData(universities, { page: newPage })
-        primitive.updateState('page', newPage)
+    const loadData = async () => {
+        try {
+            setIsLoad(true)
+            const data = await loadUniversities(params)
+            setIsLoad(false)
+            return data
+        } catch {
+            setIserror(true)
+            return { data: [], last_page: 0}
+        }
+
+    }
+
+    const filtred = async () => {
+        const data = await loadData()
+        setUniversities(data.data)
+        setLastPage(data.last_page)
     }
 
 
     useEffect(() => {
-        loadData().then(loadData => setTotalPage(Math.ceil(loadData.total / 10)))
-    }, [])
+        loadData()
+            .then(data => {
+                setUniversities([...universities, ...data.data])
+                setLastPage(data.last_page)
+            })
+    }, [params.page])
+
+
+    // console.log(setLastPage);
+    
 
     return (
 
@@ -48,22 +69,29 @@ export default function Universities() {
                         <div className="universities-sidebar">
                             <h3 className="universities-sidebar__title">Фильтры</h3>
                             <UniversitiesFilter
-                                onCheckbox={checkboxData.updateData}
-                                onUpdate={(key, value) => primitive.updateState(key, value)} />
+                                onCheckbox={(key, value) => updateCheckbox(key, value)}
+                                onUpdate={(key, value) => updateParam(key, value)} />
 
                             <CustomButton className="universities-sidebar__btn" onClick={() => filtred()} icon="search" text="Поиск" />
                         </div>
                         <div className="universities-main">
+
+                            
                             <UniversitiesForm
-                                onSort={(order, field) => primitive.manyUpdateState({ ...primitive.formState, sortOrder: order, sortField: field })}
-                                onSearch={(text) => primitive.updateState('name', text)} />
+                                onSort={(order, field) => setParams({ ...params, sortOrder: order, sortField: field })}
+                                onSearch={(text) => updateParam('name', text)} />
+
+                                {/* <div className="universities-loader"></div> */}
                             <ul className="universities-list">
                                 {
                                     universities.map((univ) => <UniversitiesItem key={univ.id} university={univ} />)
                                 }
+                                {/* <li className="universities-loader"></li> */}
                             </ul>
                             {
-                                primitive.formState.page < totalPage ? <CustomButton className="universities-main__btn" onClick={() => loadMore()} icon="plus" text="Загрузить ещё" /> : ''
+                                params.page <
+                                    lastPage ?
+                                    <CustomButton className="universities-main__btn" onClick={() => updateParam('page', params.page + 1)} icon="plus" text="Загрузить ещё" /> : ''
                             }
 
                         </div>

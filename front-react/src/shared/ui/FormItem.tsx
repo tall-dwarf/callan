@@ -1,16 +1,23 @@
 import { icons } from "../../app/data"
+import { UseFormRegister, Path } from "react-hook-form"
 
-type FormItemProps = {
+type FormItemProps<T extends object> = {
     label: string,
-    error?: string | null,
     icon: keyof typeof icons,
-    type: "text" | "email" | 'date',
-    onChange: (text: string) => void
+
+    register: UseFormRegister<T>,
+    registerName: Path<T>,
+
+    error?: string | null,
+    type?: "text" | "email" | 'date',
 }
 
-export default function FormItem({ label, icon, error, type, onChange}: FormItemProps) {
+export default function FormItem<T  extends object>({ label, icon, error, register, registerName, type = 'text'}: FormItemProps<T>) {
 
     const DynamicIcon = icons[icon]
+
+    console.log(error);
+    
 
     return (
         <div className="form-item">
@@ -18,7 +25,9 @@ export default function FormItem({ label, icon, error, type, onChange}: FormItem
                 <DynamicIcon fill="rgb(82, 191, 255)" size={20} />
                 {label}
             </label>
-            <input onChange={(event) => onChange(event.currentTarget.value)} type={type} />
+            <input 
+            {...register(registerName)}
+             type={type} />
             <span className={"form-item__error " + (error ? " form-item__error--open" : "")}>Ошибка: {error}</span>
         </div>
     )

@@ -10,6 +10,7 @@ class ConsultationController extends Controller
 {
     public function store(StoreConsultationRequest $request)
     {
+//        dd(123);
         Mail::send('emails', $request->validationData(), function($message) {
             $message->to('ilhalaktyushin@yandex.ru', '')->subject('Заявка на консультацию');
             $message->from('ilhalaktyushin@yandex.ru', 'Callan');

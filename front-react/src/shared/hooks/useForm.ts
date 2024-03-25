@@ -1,21 +1,17 @@
 import { useState } from "react";
+import { FieldValues, useForm as reactHookForm, Resolver } from "react-hook-form"
 
 
+export default function useForm<T extends FieldValues>(res: Resolver<T>) {
+    const form = reactHookForm({ resolver: res, })
+    const [isLoad, setIsLoad] = useState(false)
+    const [error, setError] = useState('')
+    const [successful, setSuccessful] = useState(false)
 
-export default function useForm<T extends object>(defaultState: T) {
-    const [formState, setFormState] = useState(defaultState)
-
-    const updateState = (key: keyof T, value: string | number) => {
-        setFormState({...formState, [key]: value})
-    }
-
-    const manyUpdateState = (state: T) => {
-        setFormState(state)
-    }
-
-    return{
-        formState,
-        updateState,
-        manyUpdateState
+    return {
+        error: { setError, error },
+        successful: { setSuccessful, successful },
+        load: { setIsLoad, isLoad },
+        form
     }
 }
